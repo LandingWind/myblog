@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>MQ - 标签 - Melon</title>
+        <link>/tags/mq/</link>
+        <description>MQ - 标签 - Melon</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 06 Apr 2020 01:00:02 &#43;0800</lastBuildDate><atom:link href="/tags/mq/" rel="self" type="application/rss+xml" /><item>
+    <title>nsq初探</title>
+    <link>/tech/nsq-exploration/</link>
+    <pubDate>Mon, 06 Apr 2020 01:00:02 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/tech/nsq-exploration/</guid>
+    <description><![CDATA[have fun with nsq 🚀 什么是nsq 推荐看看这篇文章，开发nsq的项目组对nsq的想法 我们是如何使用NSQ处理7500亿消息的 消息队列 nsq是一种MQ（消]]></description>
+</item></channel>
+</rss>

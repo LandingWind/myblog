@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Teches on Melon</title>
+    <link>/tech/</link>
+    <description>Recent content in Teches on Melon</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 24 Aug 2020 01:00:02 +0800</lastBuildDate>
+    
+	<atom:link href="/tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>source map异步构建</title>
+      <link>/tech/sourcemap-async-build/</link>
+      <pubDate>Mon, 24 Aug 2020 01:00:02 +0800</pubDate>
+      
+      <guid>/tech/sourcemap-async-build/</guid>
+      <description>需求背景 大型Webpack项目构建时，加入source map构建严重影响构建速度，而且容易导致运行内存不足进而导致构建失败 source map简单了解 https://segmentfault.com/a/1190000020213957</description>
+    </item>
+    
+    <item>
+      <title>Recoil vs Hox</title>
+      <link>/tech/recoil-vs-hox/</link>
+      <pubDate>Sun, 31 May 2020 01:00:02 +0800</pubDate>
+      
+      <guid>/tech/recoil-vs-hox/</guid>
+      <description>写在前面 这是一篇不严谨的React state manager体验文 Recoil作为React官方的试验性状态管理库，想法新颖 Hox作为蚂蚁体验技术部的</description>
+    </item>
+    
+    <item>
+      <title>recoiljs 快速上手指南</title>
+      <link>/tech/recoil-quickguide/</link>
+      <pubDate>Mon, 25 May 2020 12:05:52 +0800</pubDate>
+      
+      <guid>/tech/recoil-quickguide/</guid>
+      <description>尝试了最近拥抱hooks的react官方状态管理工具Recoil todolist demo代码仓库 recoiljs 快速上手指南 react官方的实验性状态管理库，拥抱hoo</description>
+    </item>
+    
+    <item>
+      <title>nsq初探</title>
+      <link>/tech/nsq-exploration/</link>
+      <pubDate>Mon, 06 Apr 2020 01:00:02 +0800</pubDate>
+      
+      <guid>/tech/nsq-exploration/</guid>
+      <description>have fun with nsq 🚀 什么是nsq 推荐看看这篇文章，开发nsq的项目组对nsq的想法 我们是如何使用NSQ处理7500亿消息的 消息队列 nsq是一种MQ（消</description>
+    </item>
+    
+    <item>
+      <title>React源码阅读笔记</title>
+      <link>/tech/react-reading-notes/</link>
+      <pubDate>Sun, 05 Apr 2020 22:03:08 +0800</pubDate>
+      
+      <guid>/tech/react-reading-notes/</guid>
+      <description>记录React源码阅读的一些收获 always updating&amp;hellip; Flow and Rollup flow flow是辅助JavaScript的静态类型检查工具，相对于TypeScript来说，不需要改写</description>
+    </item>
+    
+    <item>
+      <title>Groupcache源码阅读笔记</title>
+      <link>/tech/groupcache-reading-notes/</link>
+      <pubDate>Sat, 04 Apr 2020 21:47:52 +0800</pubDate>
+      
+      <guid>/tech/groupcache-reading-notes/</guid>
+      <description>GroupCache源码阅读的一些笔记 同步到了repo lru 总体而言实现方式为双向链表+map 主要逻辑如下： 添加一个新key/或者更新已有key</description>
+    </item>
+    
+    <item>
+      <title>Hugo&#43;Docker&#43;Webhooks最佳实践</title>
+      <link>/tech/hugo-docker-webhooks-best-practice/</link>
+      <pubDate>Mon, 30 Mar 2020 01:00:02 +0800</pubDate>
+      
+      <guid>/tech/hugo-docker-webhooks-best-practice/</guid>
+      <description>记录迁移个人博客到Hugo的过程 写在前面 在这之前，我的技术博客经历过wordpress、hexo、typecho 为什么选择Hugo build</description>
+    </item>
+    
+    <item>
+      <title>Min-Max算法及Alpha-Beta剪枝</title>
+      <link>/tech/min-max-and-alpha-beta/</link>
+      <pubDate>Tue, 10 Mar 2020 11:00:02 +0800</pubDate>
+      
+      <guid>/tech/min-max-and-alpha-beta/</guid>
+      <description>适用于所有情况完全已知的游戏，并且是零和游戏。 零和游戏（Zero-sum Game）：意思就是你死我活，一方的胜利代表另一方的失败，比如，象棋</description>
+    </item>
+    
+    <item>
+      <title>并查集算法概念及实现</title>
+      <link>/tech/dsu/</link>
+      <pubDate>Fri, 07 Feb 2020 11:00:02 +0800</pubDate>
+      
+      <guid>/tech/dsu/</guid>
+      <description>记录一下很早就学过的并查集 最简洁而优雅的数据结构之一 主要用于解决一些元素分组的问题 核心思想 通过一维数组，index表示当前元素编号，valu</description>
+    </item>
+    
+    <item>
+      <title>ownCloud&#43;mysql&#43;docker搭建个人云盘</title>
+      <link>/tech/personal-clouddisk/</link>
+      <pubDate>Wed, 29 Jan 2020 22:52:02 +0800</pubDate>
+      
+      <guid>/tech/personal-clouddisk/</guid>
+      <description>记录三小时搭建ownCloud云盘全过程🆒 话不多说, 先放一张成功的登录界面图👌 step 1: 选择一个适合的开源云盘 这里有很多选择 比如老牌劲旅ownCl</description>
+    </item>
+    
+    <item>
+      <title>Actor模型</title>
+      <link>/tech/actor-model/</link>
+      <pubDate>Sun, 22 Dec 2019 01:00:02 +0800</pubDate>
+      
+      <guid>/tech/actor-model/</guid>
+      <description>actor概念 Actor模型是处理并行计算的概念模型。模型中一个Actor是一个基本的计算单元。它接受消息然后基于接到的消息做一些计算。和面</description>
+    </item>
+    
+    <item>
+      <title>基于JWT的用户登录态管理</title>
+      <link>/tech/jwt-practice/</link>
+      <pubDate>Sat, 13 Apr 2019 19:13:46 +0800</pubDate>
+      
+      <guid>/tech/jwt-practice/</guid>
+      <description>jwt管理用户登录态 —— 以expressjs和vuejs的前后端分离论坛项目作为实例 session 很久很久以前，Web基本上就是文档的浏览而已 既然是浏览</description>
+    </item>
+    
+    <item>
+      <title>与svg动画纠缠不清的两天</title>
+      <link>/tech/with-svg/</link>
+      <pubDate>Tue, 20 Nov 2018 11:27:30 +0800</pubDate>
+      
+      <guid>/tech/with-svg/</guid>
+      <description>这次的文章主题是svg，预备知识基本是没有的 有几个应用过程中遇到的bug，po出来供大家参考避免走同样的弯路。 最近写了个社团的秋纳报名表，刚</description>
+    </item>
+    
+  </channel>
+</rss>

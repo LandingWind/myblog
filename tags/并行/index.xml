@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>并行 - 标签 - Melon</title>
+        <link>/tags/%E5%B9%B6%E8%A1%8C/</link>
+        <description>并行 - 标签 - Melon</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 22 Dec 2019 01:00:02 &#43;0800</lastBuildDate><atom:link href="/tags/%E5%B9%B6%E8%A1%8C/" rel="self" type="application/rss+xml" /><item>
+    <title>Actor模型</title>
+    <link>/tech/actor-model/</link>
+    <pubDate>Sun, 22 Dec 2019 01:00:02 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/tech/actor-model/</guid>
+    <description><![CDATA[actor概念 Actor模型是处理并行计算的概念模型。模型中一个Actor是一个基本的计算单元。它接受消息然后基于接到的消息做一些计算。和面]]></description>
+</item></channel>
+</rss>
