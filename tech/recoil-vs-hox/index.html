@@ -6,14 +6,14 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Recoil vs Hox - Melon</title><meta name="Description" content=""><meta property="og:title" content="Recoil vs Hox" />
-<meta property="og:description" content="写在前面 这是一篇不严谨的React state manager体验文 Recoil作为React官方的试验性状态管理库，想法新颖 Hox作为蚂蚁体验技术部的" />
+<meta property="og:description" content="写在前面 Recoil作为React官方的试验性状态管理库，想法新颖 Hox作为蚂蚁体验技术部的成果，业务经验丰富 到底使用起来哪一个比较顺手呢？" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/tech/recoil-vs-hox/" />
 <meta property="article:published_time" content="2020-05-31T01:00:02+08:00" />
 <meta property="article:modified_time" content="2020-05-31T01:00:02+08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Recoil vs Hox"/>
-<meta name="twitter:description" content="写在前面 这是一篇不严谨的React state manager体验文 Recoil作为React官方的试验性状态管理库，想法新颖 Hox作为蚂蚁体验技术部的"/>
+<meta name="twitter:description" content="写在前面 Recoil作为React官方的试验性状态管理库，想法新颖 Hox作为蚂蚁体验技术部的成果，业务经验丰富 到底使用起来哪一个比较顺手呢？"/>
 <meta name="application-name" content="Melon">
 <meta name="apple-mobile-web-app-title" content="Melon"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,7 +26,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/tech\/recoil-vs-hox\/"
-        },"genre": "tech","keywords": "hooks","wordcount":  1973 ,
+        },"genre": "tech","keywords": "hooks","wordcount":  1950 ,
         "url": "\/tech\/recoil-vs-hox\/","datePublished": "2020-05-31T01:00:02+08:00","dateModified": "2020-05-31T01:00:02+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -99,7 +99,6 @@
 </div>
 <main class="main">
                 <div class="container"><div class="page single special"><h1 class="single-title animated pulse faster">Recoil vs Hox</h1><div class="content" id="content"><h3 id="写在前面">写在前面</h3>
-<p>这是一篇不严谨的React state manager体验文</p>
 <p>Recoil作为React官方的试验性状态管理库，想法新颖</p>
 <p>Hox作为蚂蚁体验技术部的成果，业务经验丰富</p>
 <p>到底使用起来哪一个比较顺手呢？</p>
@@ -122,7 +121,12 @@
 <h5 id="首先看看recoil">首先看看Recoil</h5>
 <p><a href="https://github.com/wkk5194/Recoil-TodoList-Demo" target="_blank" rel="noopener noreffer">源码</a></p>
 <p>目录结构如下，mocker中存放了模拟后端数据，src/store文件存放了所有atom/selector</p>
-<p><img src="/Users/kaikai/Desktop/截屏2020-05-25 20.51.30.png" alt="截屏2020-05-25 20.51.30" style="zoom:50%;" /></p>
+<figure>
+    <img src="assets/images/recoil-codetree.png"/> <figcaption>
+            <h4>recoil-codetree</h4>
+        </figcaption>
+</figure>
+
 <p>使用recoil的节点需要被包裹</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

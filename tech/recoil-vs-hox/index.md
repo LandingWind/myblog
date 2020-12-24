@@ -4,8 +4,6 @@
 
 ### 写在前面
 
-这是一篇不严谨的React state manager体验文
-
 Recoil作为React官方的试验性状态管理库，想法新颖
 
 Hox作为蚂蚁体验技术部的成果，业务经验丰富
@@ -13,7 +11,6 @@ Hox作为蚂蚁体验技术部的成果，业务经验丰富
 到底使用起来哪一个比较顺手呢？
 
 这是一篇不严谨的React state manager体验文
-
 
 
 ### 概况对比
@@ -58,8 +55,7 @@ Hox作为蚂蚁体验技术部的成果，业务经验丰富
 
 目录结构如下，mocker中存放了模拟后端数据，src/store文件存放了所有atom/selector
 
-<img src="/Users/kaikai/Desktop/截屏2020-05-25 20.51.30.png" alt="截屏2020-05-25 20.51.30" style="zoom:50%;" />
-
+{{<figure src="assets/images/recoil-codetree.png" title="recoil-codetree" >}}
 
 
 使用recoil的节点需要被包裹
