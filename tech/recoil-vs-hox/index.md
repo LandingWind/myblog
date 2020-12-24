@@ -55,7 +55,7 @@ Hox作为蚂蚁体验技术部的成果，业务经验丰富
 
 目录结构如下，mocker中存放了模拟后端数据，src/store文件存放了所有atom/selector
 
-{{<figure src="assets/images/recoil-codetree.png" title="recoil-codetree" >}}
+{{<image src="https://i.loli.net/2020/12/25/2wYphFbLQaTHA7l.png" caption="recoil-todolist-codetree" >}}
 
 
 使用recoil的节点需要被包裹
@@ -183,8 +183,7 @@ map的listdata替换为filteredListState
 
 Model中存放hox定义的state manager model
 
-<img src="/Users/kaikai/Desktop/截屏2020-05-25 21.06.14.png" alt="截屏2020-05-25 21.06.14" style="zoom:50%;" />
-
+{{<image src="https://i.loli.net/2020/12/25/tMJNF7bmfpvKkAw.png" caption="hox-todolist-codetree" >}}
 
 
 useTodoModel中，将所有和todolist有关功能逻辑全部放在一块

@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>hooks - 标签 - Melon</title>
-        <link>/tags/hooks/</link>
+        <link>https://blog.joyinn.top/tags/hooks/</link>
         <description>hooks - 标签 - Melon</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 31 May 2020 01:00:02 &#43;0800</lastBuildDate><atom:link href="/tags/hooks/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 31 May 2020 01:00:02 &#43;0800</lastBuildDate><atom:link href="https://blog.joyinn.top/tags/hooks/" rel="self" type="application/rss+xml" /><item>
     <title>Recoil vs Hox</title>
-    <link>/tech/recoil-vs-hox/</link>
+    <link>https://blog.joyinn.top/tech/recoil-vs-hox/</link>
     <pubDate>Sun, 31 May 2020 01:00:02 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>/tech/recoil-vs-hox/</guid>
+    <guid>https://blog.joyinn.top/tech/recoil-vs-hox/</guid>
     <description><![CDATA[写在前面 Recoil作为React官方的试验性状态管理库，想法新颖 Hox作为蚂蚁体验技术部的成果，业务经验丰富 到底使用起来哪一个比较顺手呢？]]></description>
 </item></channel>
 </rss>
