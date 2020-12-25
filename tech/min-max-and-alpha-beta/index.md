@@ -6,17 +6,17 @@
 
 这样的游戏可以用树状图表示：MAX表示自己，MIN表示对手；Utility是对着一种情况给出的分数（对自己而言越高越好）
 
-![](http://qiniustorage.joyinn.top/v2-71463a9b4164037bfa560428a380f414_1440w.jpg "minmax")
+![](https://i.loli.net/2020/12/26/25mVeYwD6CBXITh.jpg "minmax")
 
 那么自己希望最大化这一utility，对手希望最小化这一utility，所以可以通过结果反推某一步应该采取的选择。
 
-![](http://qiniustorage.joyinn.top/v2-4bc20188baf14f03a169f0c466b640a9_1440w.jpg "step1")
+![](https://i.loli.net/2020/12/26/Lj4VviFS5cdZJ3N.jpg "step1")
 
-![](http://qiniustorage.joyinn.top/v2-a49a799c917f1351d4f04a6b76196fcc_1440w.jpg "step2")
+![](https://i.loli.net/2020/12/26/4npYIBkPti13qAv.jpg "step2")
 
-![](http://qiniustorage.joyinn.top/v2-a605fbf72a4a9c55d9cd81a132469fc3_1440w.jpg "step3")
+![](https://i.loli.net/2020/12/26/TPBDU5KYiZkStcA.jpg "step3")
 
-![](http://qiniustorage.joyinn.top/v2-36067e087df9871f7e8f08f702f27c3d_1440w.jpg "step4")
+![](https://i.loli.net/2020/12/26/DOkltoeCxNwXc6G.jpg "step4")
 
 由于情况数太多需要采取剪枝算法（Alpha-Beta）来减少运算量：
 

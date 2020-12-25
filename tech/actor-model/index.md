@@ -9,7 +9,7 @@ Actor模型是处理**并行计算**的概念模型。模型中一个Actor是一
 
 actor**按次序处理消息**，比如你发送三个消息给一个actor，它们不会被并发处理。如果你想让这三个消息得到并发处理，你需要创建3个actor，然后分别发送给它们。接受到的异步消息存在于actor内部的一个队列中，我们可以把它形象化的叫做邮箱。
 
-{{<image src="http://qiniustorage.joyinn.top/blog/748527711.jpg" title="形象化邮箱逻辑">}}
+{{<image src="https://i.loli.net/2020/12/26/Trhpbn7ocKm6szX.jpg" title="形象化邮箱逻辑">}}
 
 
 简单来说，Actor通过消息传递的方式与外界通信，而且消息传递是异步的。每个Actor都有一个邮箱，邮箱接收并缓存其他Actor发过来的消息，通过邮箱队列`mail queue`来处理消息。Actor一次只能同步处理一个消息，处理消息过程中，除了可以接收消息外不能做任何其他操作。
@@ -56,12 +56,12 @@ Actor模型为并发而生，是为解决高并发的一种编程思路。使用
 
 ### 传统锁方式
 
-{{<image src="http://qiniustorage.joyinn.top/blog/2993046208.png" title="传统锁方式">}}
+{{<image src="https://i.loli.net/2020/12/26/QfBPyEnHgrFzdkj.png" title="传统锁方式">}}
 
 
 ### Actor方式
 
-{{<image src="http://qiniustorage.joyinn.top/blog/478379264.png" title="Actor方式">}}
+{{<image src="https://i.loli.net/2020/12/26/mk2MaFlVpTofCRr.png" title="Actor方式">}}
 
 
 ## 另外

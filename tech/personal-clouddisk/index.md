@@ -5,7 +5,7 @@
 
 话不多说, 先放一张成功的登录界面图👌
 
-{{<image src="http://qiniustorage.joyinn.top/20200129225104.png" title="ownCloud登录界面">}}
+{{<image src="https://i.loli.net/2020/12/26/RhlsSXaLQp2jqMt.png" title="ownCloud登录界面">}}
 
 
 ## step 1: 选择一个适合的开源云盘
@@ -27,7 +27,7 @@ Manual Installation的话其实就是完整走一遍流程: Install ownCloud、C
 
 这里需要强调的一点是, ownCloud官方提供了docker包含了server和apache+php, 所以我就不舍近求远了直接用官方的docker image
 
-{{<image src="http://qiniustorage.joyinn.top/20200129231500.png" title="docker search owncloud">}}
+{{<image src="https://i.loli.net/2020/12/26/NBscyDa5IuqEMPw.png" title="docker search owncloud">}}
 
 (如果有其他需要可以去docker hub搜索其他docker image)
 
@@ -104,4 +104,4 @@ server {
 
 ## step 6: 愉快的玩耍ownCloud吧
 
-{{<image src="http://qiniustorage.joyinn.top/20200129234908.png" title="ownCloud存储页面">}}
+{{<image src="https://i.loli.net/2020/12/26/U9w8TzvuZCAVjnp.png" title="ownCloud存储页面">}}

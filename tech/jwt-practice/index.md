@@ -30,12 +30,12 @@ jwt管理用户登录态 —— 以`expressjs`和`vuejs`的前后端分离论坛
 有时候会采用一点小伎俩：session sticky，就是让小F的请求一直粘连在机器A上，但是这也不管用，要是机器A挂掉了，还得转到机器B去。
 那只好做session的复制了，把session id在两个机器之间搬来搬去，快累死了。
 
-{{<image src="http://qiniustorage.joyinn.top/20200331191538.png" title="session sticky">}}
+{{<image src="https://i.loli.net/2020/12/26/hW3uHFvJznL4U1B.png" title="session sticky">}}
 
 
 后来有个叫Memcached的支了招： 把session id集中存储到一个地方，所有的机器都来访问这个地方的数据，这样一来，就不用复制了，但是增加了单点失败的可能性，要是那个负责session 的机器挂了，所有人都得重新登录一遍，估计得被人骂死
 
-{{<image src="http://qiniustorage.joyinn.top/20200331191630.png" title="session集中存放">}}
+{{<image src="https://i.loli.net/2020/12/26/gD29HMsGZdXpBcx.png" title="session集中存放">}}
 
 ## token
 
@@ -49,11 +49,11 @@ jwt管理用户登录态 —— 以`expressjs`和`vuejs`的前后端分离论坛
 
 那就对数据做一个签名吧，比如说我用SHA256算法，加上一个只有我才知道的密钥，对数据做一个签名，把这个签名和数据一起作为token，由于密钥别人不知道，就无法伪造token了。
 
-{{<image src="http://qiniustorage.joyinn.top/20200331191652.png" title="hash加密得到token">}}
+{{<image src="https://i.loli.net/2020/12/26/W328XH6pg1QRqMN.png" title="hash加密得到token">}}
 
 这个token 我不保存，当小F把这个token 给我发过来的时候，我再用同样的HMAC-SHA256 算法和同样的密钥，对数据再计算一次签名，和token 中的签名做个比较，如果相同，我就知道小F已经登录过了，并且可以直接取到小F的user id，如果不相同，数据部分肯定被人篡改过，我就告诉发送者：对不起，没有认证。
 
-{{<image src="http://qiniustorage.joyinn.top/20200331191727.png" title="token验证">}}
+{{<image src="https://i.loli.net/2020/12/26/KMgLj9wrsQG5ufO.png" title="token验证">}}
 
 Token 中的数据是明文保存的（虽然我会用Base64做下编码，但那不是加密），还是可以被别人看到的，所以我不能在其中保存像密码这样的敏感信息。
 
@@ -79,7 +79,7 @@ cookie由服务器生成，发送给浏览器，浏览器把cookie以kv形式保
 5. 服务端验证token并返回数据。
 {{< /admonition >}}
 
-{{<image src="http://qiniustorage.joyinn.top/20200331191802.png" title="token验证">}}
+{{<image src="https://i.loli.net/2020/12/26/2R8N75PQVxlKvej.png" title="token验证">}}
 
 ## JWT
 
@@ -94,7 +94,7 @@ JWT 的数据结构
 
 JWT 的三个部分依次如下。
 
-{{<image src="http://qiniustorage.joyinn.top/20200331191820.png" title="token验证">}}
+{{<image src="https://i.loli.net/2020/12/26/N7aIfcqWjYh5kZl.png" title="token验证">}}
 
 Header 部分是一个 JSON 对象，描述 JWT 的元数据，
 Payload 部分也是一个 JSON 对象，用来存放实际需要传递的数据。JWT 规定了7个官方字段供选用。

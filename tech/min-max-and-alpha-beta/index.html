@@ -43,18 +43,7 @@
             <a href="/" title="Melon">Melon</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/tech"> Tech </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
-                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
-                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
-                            <i class="fas fa-search fa-fw"></i>
-                        </a>
-                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
-                            <i class="fas fa-times-circle fa-fw"></i>
-                        </a>
-                        <span class="search-button search-loading" id="search-loading-desktop">
-                            <i class="fas fa-spinner fa-fw fa-spin"></i>
-                        </span>
-                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+            <div class="menu-inner"><a class="menu-item" href="/tech"> Tech </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                     <i class="fas fa-adjust fa-fw"></i>
                 </a>
             </div>
@@ -70,23 +59,7 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><div class="search-wrapper">
-                    <div class="search mobile" id="search-mobile">
-                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
-                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
-                            <i class="fas fa-search fa-fw"></i>
-                        </a>
-                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
-                            <i class="fas fa-times-circle fa-fw"></i>
-                        </a>
-                        <span class="search-button search-loading" id="search-loading-mobile">
-                            <i class="fas fa-spinner fa-fw fa-spin"></i>
-                        </span>
-                    </div>
-                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
-                        取消
-                    </a>
-                </div><a class="menu-item" href="/tech" title="">Tech</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/tech" title="">Tech</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
             </a></div>
     </div>
@@ -101,62 +74,60 @@
                 <div class="container"><div class="page single special"><h1 class="single-title animated pulse faster">Min-Max算法及Alpha-Beta剪枝</h1><div class="content" id="content"><p>适用于所有情况完全已知的游戏，并且是零和游戏。
 零和游戏（Zero-sum Game）：意思就是你死我活，一方的胜利代表另一方的失败，比如，象棋，五子棋等。 完全信息（Perfect Information）：玩家知道之前所有的步骤。象棋就是完全信息，因为玩家是交替着落子，且之前的步骤都能在棋盘上体现，但是石头剪子布就不是。</p>
 <p>这样的游戏可以用树状图表示：MAX表示自己，MIN表示对手；Utility是对着一种情况给出的分数（对自己而言越高越好）</p>
-<p><figure><a class="lightgallery" href="http://qiniustorage.joyinn.top/v2-71463a9b4164037bfa560428a380f414_1440w.jpg" title="http://qiniustorage.joyinn.top/v2-71463a9b4164037bfa560428a380f414_1440w.jpg" data-thumbnail="http://qiniustorage.joyinn.top/v2-71463a9b4164037bfa560428a380f414_1440w.jpg" data-sub-html="<h2>minmax</h2>">
+<p><figure><a class="lightgallery" href="https://i.loli.net/2020/12/26/25mVeYwD6CBXITh.jpg" title="https://i.loli.net/2020/12/26/25mVeYwD6CBXITh.jpg" data-thumbnail="https://i.loli.net/2020/12/26/25mVeYwD6CBXITh.jpg" data-sub-html="<h2>minmax</h2>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="http://qiniustorage.joyinn.top/v2-71463a9b4164037bfa560428a380f414_1440w.jpg"
-            data-srcset="http://qiniustorage.joyinn.top/v2-71463a9b4164037bfa560428a380f414_1440w.jpg, http://qiniustorage.joyinn.top/v2-71463a9b4164037bfa560428a380f414_1440w.jpg 1.5x, http://qiniustorage.joyinn.top/v2-71463a9b4164037bfa560428a380f414_1440w.jpg 2x"
+            data-src="https://i.loli.net/2020/12/26/25mVeYwD6CBXITh.jpg"
+            data-srcset="https://i.loli.net/2020/12/26/25mVeYwD6CBXITh.jpg, https://i.loli.net/2020/12/26/25mVeYwD6CBXITh.jpg 1.5x, https://i.loli.net/2020/12/26/25mVeYwD6CBXITh.jpg 2x"
             data-sizes="auto"
-            alt="http://qiniustorage.joyinn.top/v2-71463a9b4164037bfa560428a380f414_1440w.jpg" />
+            alt="https://i.loli.net/2020/12/26/25mVeYwD6CBXITh.jpg" />
     </a><figcaption class="image-caption">minmax</figcaption>
     </figure></p>
 <p>那么自己希望最大化这一utility，对手希望最小化这一utility，所以可以通过结果反推某一步应该采取的选择。</p>
-<p><figure><a class="lightgallery" href="http://qiniustorage.joyinn.top/v2-4bc20188baf14f03a169f0c466b640a9_1440w.jpg" title="http://qiniustorage.joyinn.top/v2-4bc20188baf14f03a169f0c466b640a9_1440w.jpg" data-thumbnail="http://qiniustorage.joyinn.top/v2-4bc20188baf14f03a169f0c466b640a9_1440w.jpg" data-sub-html="<h2>step1</h2>">
+<p><figure><a class="lightgallery" href="https://i.loli.net/2020/12/26/Lj4VviFS5cdZJ3N.jpg" title="https://i.loli.net/2020/12/26/Lj4VviFS5cdZJ3N.jpg" data-thumbnail="https://i.loli.net/2020/12/26/Lj4VviFS5cdZJ3N.jpg" data-sub-html="<h2>step1</h2>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="http://qiniustorage.joyinn.top/v2-4bc20188baf14f03a169f0c466b640a9_1440w.jpg"
-            data-srcset="http://qiniustorage.joyinn.top/v2-4bc20188baf14f03a169f0c466b640a9_1440w.jpg, http://qiniustorage.joyinn.top/v2-4bc20188baf14f03a169f0c466b640a9_1440w.jpg 1.5x, http://qiniustorage.joyinn.top/v2-4bc20188baf14f03a169f0c466b640a9_1440w.jpg 2x"
+            data-src="https://i.loli.net/2020/12/26/Lj4VviFS5cdZJ3N.jpg"
+            data-srcset="https://i.loli.net/2020/12/26/Lj4VviFS5cdZJ3N.jpg, https://i.loli.net/2020/12/26/Lj4VviFS5cdZJ3N.jpg 1.5x, https://i.loli.net/2020/12/26/Lj4VviFS5cdZJ3N.jpg 2x"
             data-sizes="auto"
-            alt="http://qiniustorage.joyinn.top/v2-4bc20188baf14f03a169f0c466b640a9_1440w.jpg" />
+            alt="https://i.loli.net/2020/12/26/Lj4VviFS5cdZJ3N.jpg" />
     </a><figcaption class="image-caption">step1</figcaption>
     </figure></p>
-<p><figure><a class="lightgallery" href="http://qiniustorage.joyinn.top/v2-a49a799c917f1351d4f04a6b76196fcc_1440w.jpg" title="http://qiniustorage.joyinn.top/v2-a49a799c917f1351d4f04a6b76196fcc_1440w.jpg" data-thumbnail="http://qiniustorage.joyinn.top/v2-a49a799c917f1351d4f04a6b76196fcc_1440w.jpg" data-sub-html="<h2>step2</h2>">
+<p><figure><a class="lightgallery" href="https://i.loli.net/2020/12/26/4npYIBkPti13qAv.jpg" title="https://i.loli.net/2020/12/26/4npYIBkPti13qAv.jpg" data-thumbnail="https://i.loli.net/2020/12/26/4npYIBkPti13qAv.jpg" data-sub-html="<h2>step2</h2>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="http://qiniustorage.joyinn.top/v2-a49a799c917f1351d4f04a6b76196fcc_1440w.jpg"
-            data-srcset="http://qiniustorage.joyinn.top/v2-a49a799c917f1351d4f04a6b76196fcc_1440w.jpg, http://qiniustorage.joyinn.top/v2-a49a799c917f1351d4f04a6b76196fcc_1440w.jpg 1.5x, http://qiniustorage.joyinn.top/v2-a49a799c917f1351d4f04a6b76196fcc_1440w.jpg 2x"
+            data-src="https://i.loli.net/2020/12/26/4npYIBkPti13qAv.jpg"
+            data-srcset="https://i.loli.net/2020/12/26/4npYIBkPti13qAv.jpg, https://i.loli.net/2020/12/26/4npYIBkPti13qAv.jpg 1.5x, https://i.loli.net/2020/12/26/4npYIBkPti13qAv.jpg 2x"
             data-sizes="auto"
-            alt="http://qiniustorage.joyinn.top/v2-a49a799c917f1351d4f04a6b76196fcc_1440w.jpg" />
+            alt="https://i.loli.net/2020/12/26/4npYIBkPti13qAv.jpg" />
     </a><figcaption class="image-caption">step2</figcaption>
     </figure></p>
-<p><figure><a class="lightgallery" href="http://qiniustorage.joyinn.top/v2-a605fbf72a4a9c55d9cd81a132469fc3_1440w.jpg" title="http://qiniustorage.joyinn.top/v2-a605fbf72a4a9c55d9cd81a132469fc3_1440w.jpg" data-thumbnail="http://qiniustorage.joyinn.top/v2-a605fbf72a4a9c55d9cd81a132469fc3_1440w.jpg" data-sub-html="<h2>step3</h2>">
+<p><figure><a class="lightgallery" href="https://i.loli.net/2020/12/26/TPBDU5KYiZkStcA.jpg" title="https://i.loli.net/2020/12/26/TPBDU5KYiZkStcA.jpg" data-thumbnail="https://i.loli.net/2020/12/26/TPBDU5KYiZkStcA.jpg" data-sub-html="<h2>step3</h2>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="http://qiniustorage.joyinn.top/v2-a605fbf72a4a9c55d9cd81a132469fc3_1440w.jpg"
-            data-srcset="http://qiniustorage.joyinn.top/v2-a605fbf72a4a9c55d9cd81a132469fc3_1440w.jpg, http://qiniustorage.joyinn.top/v2-a605fbf72a4a9c55d9cd81a132469fc3_1440w.jpg 1.5x, http://qiniustorage.joyinn.top/v2-a605fbf72a4a9c55d9cd81a132469fc3_1440w.jpg 2x"
+            data-src="https://i.loli.net/2020/12/26/TPBDU5KYiZkStcA.jpg"
+            data-srcset="https://i.loli.net/2020/12/26/TPBDU5KYiZkStcA.jpg, https://i.loli.net/2020/12/26/TPBDU5KYiZkStcA.jpg 1.5x, https://i.loli.net/2020/12/26/TPBDU5KYiZkStcA.jpg 2x"
             data-sizes="auto"
-            alt="http://qiniustorage.joyinn.top/v2-a605fbf72a4a9c55d9cd81a132469fc3_1440w.jpg" />
+            alt="https://i.loli.net/2020/12/26/TPBDU5KYiZkStcA.jpg" />
     </a><figcaption class="image-caption">step3</figcaption>
     </figure></p>
-<p><figure><a class="lightgallery" href="http://qiniustorage.joyinn.top/v2-36067e087df9871f7e8f08f702f27c3d_1440w.jpg" title="http://qiniustorage.joyinn.top/v2-36067e087df9871f7e8f08f702f27c3d_1440w.jpg" data-thumbnail="http://qiniustorage.joyinn.top/v2-36067e087df9871f7e8f08f702f27c3d_1440w.jpg" data-sub-html="<h2>step4</h2>">
+<p><figure><a class="lightgallery" href="https://i.loli.net/2020/12/26/DOkltoeCxNwXc6G.jpg" title="https://i.loli.net/2020/12/26/DOkltoeCxNwXc6G.jpg" data-thumbnail="https://i.loli.net/2020/12/26/DOkltoeCxNwXc6G.jpg" data-sub-html="<h2>step4</h2>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="http://qiniustorage.joyinn.top/v2-36067e087df9871f7e8f08f702f27c3d_1440w.jpg"
-            data-srcset="http://qiniustorage.joyinn.top/v2-36067e087df9871f7e8f08f702f27c3d_1440w.jpg, http://qiniustorage.joyinn.top/v2-36067e087df9871f7e8f08f702f27c3d_1440w.jpg 1.5x, http://qiniustorage.joyinn.top/v2-36067e087df9871f7e8f08f702f27c3d_1440w.jpg 2x"
+            data-src="https://i.loli.net/2020/12/26/DOkltoeCxNwXc6G.jpg"
+            data-srcset="https://i.loli.net/2020/12/26/DOkltoeCxNwXc6G.jpg, https://i.loli.net/2020/12/26/DOkltoeCxNwXc6G.jpg 1.5x, https://i.loli.net/2020/12/26/DOkltoeCxNwXc6G.jpg 2x"
             data-sizes="auto"
-            alt="http://qiniustorage.joyinn.top/v2-36067e087df9871f7e8f08f702f27c3d_1440w.jpg" />
+            alt="https://i.loli.net/2020/12/26/DOkltoeCxNwXc6G.jpg" />
     </a><figcaption class="image-caption">step4</figcaption>
     </figure></p>
 <p>由于情况数太多需要采取剪枝算法（Alpha-Beta）来减少运算量：</p>
 <p>每个MAX结点设置一个目前已知下界alpha，每个MIN节点设置一个目前已知上界beta。当计算一个MIN结点时，如果它的beta值小于等于其父结点的alpha值，则可以立即停止此结点的计算（alpha剪枝）；当计算一个MAX结点时，如果它的alpha结点大于等于其父结点的beta值，也可以立即停止此结点的计算（beta剪枝）</p>
-</div><div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
-                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
-            </noscript></div></div></div>
+</div></div></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by Hugo | Theme is LoveIt
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/landingwind" target="_blank">wkk</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
@@ -168,5 +139,5 @@
             </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/katex/katex.min.4afae7d446ba01ebf7fff19893eaf3a1.css" integrity="md5-Svrn1Ea6Aev3//GYk&#43;rzoQ=="><link rel="stylesheet" href="/lib/katex/copy-tex.min.b1994d1b9785dd8801dbf655df7bf6d9.css" integrity="md5-sZlNG5eF3YgB2/ZV33v22Q=="><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.acf82ee47549fdc386d02768992a49ad.css" integrity="md5-rPgu5HVJ/cOG0CdomSpJrQ=="><script type="text/javascript" src="https://wkkblog.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.100efdceabf7a138f3297e437d078f74.js" integrity="md5-EA79zqv3oTjzKX5DfQePdA=="></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.ae7c5011def46b283696baf367586b5d.js" integrity="md5-rnxQEd70ayg2lrrzZ1hrXQ=="></script><script type="text/javascript" src="/lib/lunr/lunr.min.a08f2562fde4550269dfc13028ed2502.js" integrity="md5-oI8lYv3kVQJp38EwKO0lAg=="></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.b82fb8d93ce0ea6a485dfa3a0b1e7573.js" integrity="md5-uC&#43;42Tzg6mpIXfo6Cx51cw=="></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.f1ba3e22560e2eb7474f28feb4507617.js" integrity="md5-8bo&#43;IlYOLrdHTyj&#43;tFB2Fw=="></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.b80e49640d4794d4333d00db76ea22f7.js" integrity="md5-uA5JZA1HlNQzPQDbduoi9w=="></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.af8ab36589315582ccdd82f22e84bffb.js" integrity="md5-r4qzZYkxVYLM3YLyLoS/&#43;w=="></script><script type="text/javascript" src="/lib/katex/katex.min.c158c9e823b681cf535f46596b5e4eac.js" integrity="md5-wVjJ6CO2gc9TX0ZZa15OrA=="></script><script type="text/javascript" src="/lib/katex/auto-render.min.28cd0b98cd3f4fa37d52f3ffe47ad9d4.js" integrity="md5-KM0LmM0/T6N9UvP/5HrZ1A=="></script><script type="text/javascript" src="/lib/katex/copy-tex.min.bfaec7d1dea915d74a7a6d833f0ff62e.js" integrity="md5-v67H0d6pFddKem2DPw/2Lg=="></script><script type="text/javascript" src="/lib/katex/mhchem.min.1bbb252363e83547d4b2186a41eaca28.js" integrity="md5-G7slI2PoNUfUshhqQerKKA=="></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.4a48532bf0b17c058b8b6854f49de23f.js" integrity="md5-SkhTK/CxfAWLi2hU9J3iPw=="></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.7bc7989e979c4a19d97db3ab311a80fe.js" integrity="md5-e8eYnpecShnZfbOrMRqA/g=="></script></body>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.4afae7d446ba01ebf7fff19893eaf3a1.css" integrity="md5-Svrn1Ea6Aev3//GYk&#43;rzoQ=="><link rel="stylesheet" href="/lib/katex/copy-tex.min.b1994d1b9785dd8801dbf655df7bf6d9.css" integrity="md5-sZlNG5eF3YgB2/ZV33v22Q=="><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.acf82ee47549fdc386d02768992a49ad.css" integrity="md5-rPgu5HVJ/cOG0CdomSpJrQ=="><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.100efdceabf7a138f3297e437d078f74.js" integrity="md5-EA79zqv3oTjzKX5DfQePdA=="></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.b80e49640d4794d4333d00db76ea22f7.js" integrity="md5-uA5JZA1HlNQzPQDbduoi9w=="></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.af8ab36589315582ccdd82f22e84bffb.js" integrity="md5-r4qzZYkxVYLM3YLyLoS/&#43;w=="></script><script type="text/javascript" src="/lib/katex/katex.min.c158c9e823b681cf535f46596b5e4eac.js" integrity="md5-wVjJ6CO2gc9TX0ZZa15OrA=="></script><script type="text/javascript" src="/lib/katex/auto-render.min.28cd0b98cd3f4fa37d52f3ffe47ad9d4.js" integrity="md5-KM0LmM0/T6N9UvP/5HrZ1A=="></script><script type="text/javascript" src="/lib/katex/copy-tex.min.bfaec7d1dea915d74a7a6d833f0ff62e.js" integrity="md5-v67H0d6pFddKem2DPw/2Lg=="></script><script type="text/javascript" src="/lib/katex/mhchem.min.1bbb252363e83547d4b2186a41eaca28.js" integrity="md5-G7slI2PoNUfUshhqQerKKA=="></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.4a48532bf0b17c058b8b6854f49de23f.js" integrity="md5-SkhTK/CxfAWLi2hU9J3iPw=="></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.7bc7989e979c4a19d97db3ab311a80fe.js" integrity="md5-e8eYnpecShnZfbOrMRqA/g=="></script></body>
 </html>

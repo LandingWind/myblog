@@ -43,18 +43,7 @@
             <a href="/" title="Melon">Melon</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/tech"> Tech </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
-                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
-                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
-                            <i class="fas fa-search fa-fw"></i>
-                        </a>
-                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
-                            <i class="fas fa-times-circle fa-fw"></i>
-                        </a>
-                        <span class="search-button search-loading" id="search-loading-desktop">
-                            <i class="fas fa-spinner fa-fw fa-spin"></i>
-                        </span>
-                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+            <div class="menu-inner"><a class="menu-item" href="/tech"> Tech </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                     <i class="fas fa-adjust fa-fw"></i>
                 </a>
             </div>
@@ -70,23 +59,7 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><div class="search-wrapper">
-                    <div class="search mobile" id="search-mobile">
-                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
-                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
-                            <i class="fas fa-search fa-fw"></i>
-                        </a>
-                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
-                            <i class="fas fa-times-circle fa-fw"></i>
-                        </a>
-                        <span class="search-button search-loading" id="search-loading-mobile">
-                            <i class="fas fa-spinner fa-fw fa-spin"></i>
-                        </span>
-                    </div>
-                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
-                        取消
-                    </a>
-                </div><a class="menu-item" href="/tech" title="">Tech</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/tech" title="">Tech</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
             </a></div>
     </div>
@@ -124,24 +97,24 @@
 <p>这对服务器说是一个巨大的开销，严重的限制了服务器扩展能力，比如说我用两个机器组成了一个集群，小F通过机器A登录了系统，那session id会保存在机器A上，假设小F的下一次请求被转发到机器B怎么办？  机器B可没有小F的session id啊。</p>
 <p>有时候会采用一点小伎俩：session sticky，就是让小F的请求一直粘连在机器A上，但是这也不管用，要是机器A挂掉了，还得转到机器B去。
 那只好做session的复制了，把session id在两个机器之间搬来搬去，快累死了。</p>
-<a class="lightgallery" href="http://qiniustorage.joyinn.top/20200331191538.png" title="session sticky" data-thumbnail="http://qiniustorage.joyinn.top/20200331191538.png">
+<a class="lightgallery" href="https://i.loli.net/2020/12/26/hW3uHFvJznL4U1B.png" title="session sticky" data-thumbnail="https://i.loli.net/2020/12/26/hW3uHFvJznL4U1B.png">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="http://qiniustorage.joyinn.top/20200331191538.png"
-            data-srcset="http://qiniustorage.joyinn.top/20200331191538.png, http://qiniustorage.joyinn.top/20200331191538.png 1.5x, http://qiniustorage.joyinn.top/20200331191538.png 2x"
+            data-src="https://i.loli.net/2020/12/26/hW3uHFvJznL4U1B.png"
+            data-srcset="https://i.loli.net/2020/12/26/hW3uHFvJznL4U1B.png, https://i.loli.net/2020/12/26/hW3uHFvJznL4U1B.png 1.5x, https://i.loli.net/2020/12/26/hW3uHFvJznL4U1B.png 2x"
             data-sizes="auto"
-            alt="http://qiniustorage.joyinn.top/20200331191538.png" />
+            alt="https://i.loli.net/2020/12/26/hW3uHFvJznL4U1B.png" />
     </a>
 <p>后来有个叫Memcached的支了招： 把session id集中存储到一个地方，所有的机器都来访问这个地方的数据，这样一来，就不用复制了，但是增加了单点失败的可能性，要是那个负责session 的机器挂了，所有人都得重新登录一遍，估计得被人骂死</p>
-<a class="lightgallery" href="http://qiniustorage.joyinn.top/20200331191630.png" title="session集中存放" data-thumbnail="http://qiniustorage.joyinn.top/20200331191630.png">
+<a class="lightgallery" href="https://i.loli.net/2020/12/26/gD29HMsGZdXpBcx.png" title="session集中存放" data-thumbnail="https://i.loli.net/2020/12/26/gD29HMsGZdXpBcx.png">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="http://qiniustorage.joyinn.top/20200331191630.png"
-            data-srcset="http://qiniustorage.joyinn.top/20200331191630.png, http://qiniustorage.joyinn.top/20200331191630.png 1.5x, http://qiniustorage.joyinn.top/20200331191630.png 2x"
+            data-src="https://i.loli.net/2020/12/26/gD29HMsGZdXpBcx.png"
+            data-srcset="https://i.loli.net/2020/12/26/gD29HMsGZdXpBcx.png, https://i.loli.net/2020/12/26/gD29HMsGZdXpBcx.png 1.5x, https://i.loli.net/2020/12/26/gD29HMsGZdXpBcx.png 2x"
             data-sizes="auto"
-            alt="http://qiniustorage.joyinn.top/20200331191630.png" />
+            alt="https://i.loli.net/2020/12/26/gD29HMsGZdXpBcx.png" />
     </a>
 <h2 id="token">token</h2>
 <p>于是有人就一直在思考，我为什么要保存这可恶的session呢，只让每个客户端去保存该多好？
@@ -150,24 +123,24 @@
 <p>比如说，小F已经登录了系统，我给他发一个令牌(token)，里边包含了小F的user id，下一次小F再次通过Http请求访问我的时候，把这个token通过Http header带过来不就可以了。</p>
 <p>不过这和session id没有本质区别啊，任何人都可以可以伪造，所以我得想点儿办法，让别人伪造不了。</p>
 <p>那就对数据做一个签名吧，比如说我用SHA256算法，加上一个只有我才知道的密钥，对数据做一个签名，把这个签名和数据一起作为token，由于密钥别人不知道，就无法伪造token了。</p>
-<a class="lightgallery" href="http://qiniustorage.joyinn.top/20200331191652.png" title="hash加密得到token" data-thumbnail="http://qiniustorage.joyinn.top/20200331191652.png">
+<a class="lightgallery" href="https://i.loli.net/2020/12/26/W328XH6pg1QRqMN.png" title="hash加密得到token" data-thumbnail="https://i.loli.net/2020/12/26/W328XH6pg1QRqMN.png">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="http://qiniustorage.joyinn.top/20200331191652.png"
-            data-srcset="http://qiniustorage.joyinn.top/20200331191652.png, http://qiniustorage.joyinn.top/20200331191652.png 1.5x, http://qiniustorage.joyinn.top/20200331191652.png 2x"
+            data-src="https://i.loli.net/2020/12/26/W328XH6pg1QRqMN.png"
+            data-srcset="https://i.loli.net/2020/12/26/W328XH6pg1QRqMN.png, https://i.loli.net/2020/12/26/W328XH6pg1QRqMN.png 1.5x, https://i.loli.net/2020/12/26/W328XH6pg1QRqMN.png 2x"
             data-sizes="auto"
-            alt="http://qiniustorage.joyinn.top/20200331191652.png" />
+            alt="https://i.loli.net/2020/12/26/W328XH6pg1QRqMN.png" />
     </a>
 <p>这个token 我不保存，当小F把这个token 给我发过来的时候，我再用同样的HMAC-SHA256 算法和同样的密钥，对数据再计算一次签名，和token 中的签名做个比较，如果相同，我就知道小F已经登录过了，并且可以直接取到小F的user id，如果不相同，数据部分肯定被人篡改过，我就告诉发送者：对不起，没有认证。</p>
-<a class="lightgallery" href="http://qiniustorage.joyinn.top/20200331191727.png" title="token验证" data-thumbnail="http://qiniustorage.joyinn.top/20200331191727.png">
+<a class="lightgallery" href="https://i.loli.net/2020/12/26/KMgLj9wrsQG5ufO.png" title="token验证" data-thumbnail="https://i.loli.net/2020/12/26/KMgLj9wrsQG5ufO.png">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="http://qiniustorage.joyinn.top/20200331191727.png"
-            data-srcset="http://qiniustorage.joyinn.top/20200331191727.png, http://qiniustorage.joyinn.top/20200331191727.png 1.5x, http://qiniustorage.joyinn.top/20200331191727.png 2x"
+            data-src="https://i.loli.net/2020/12/26/KMgLj9wrsQG5ufO.png"
+            data-srcset="https://i.loli.net/2020/12/26/KMgLj9wrsQG5ufO.png, https://i.loli.net/2020/12/26/KMgLj9wrsQG5ufO.png 1.5x, https://i.loli.net/2020/12/26/KMgLj9wrsQG5ufO.png 2x"
             data-sizes="auto"
-            alt="http://qiniustorage.joyinn.top/20200331191727.png" />
+            alt="https://i.loli.net/2020/12/26/KMgLj9wrsQG5ufO.png" />
     </a>
 <p>Token 中的数据是明文保存的（虽然我会用Base64做下编码，但那不是加密），还是可以被别人看到的，所以我不能在其中保存像密码这样的敏感信息。</p>
 <p>当然，如果一个人的token被别人偷走了，那我也没办法，我也会认为小偷就是合法用户，这其实和一个人的session id被别人偷走是一样的。</p>
@@ -192,14 +165,14 @@
 </div>
         </div>
     </div>
-<a class="lightgallery" href="http://qiniustorage.joyinn.top/20200331191802.png" title="token验证" data-thumbnail="http://qiniustorage.joyinn.top/20200331191802.png">
+<a class="lightgallery" href="https://i.loli.net/2020/12/26/2R8N75PQVxlKvej.png" title="token验证" data-thumbnail="https://i.loli.net/2020/12/26/2R8N75PQVxlKvej.png">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="http://qiniustorage.joyinn.top/20200331191802.png"
-            data-srcset="http://qiniustorage.joyinn.top/20200331191802.png, http://qiniustorage.joyinn.top/20200331191802.png 1.5x, http://qiniustorage.joyinn.top/20200331191802.png 2x"
+            data-src="https://i.loli.net/2020/12/26/2R8N75PQVxlKvej.png"
+            data-srcset="https://i.loli.net/2020/12/26/2R8N75PQVxlKvej.png, https://i.loli.net/2020/12/26/2R8N75PQVxlKvej.png 1.5x, https://i.loli.net/2020/12/26/2R8N75PQVxlKvej.png 2x"
             data-sizes="auto"
-            alt="http://qiniustorage.joyinn.top/20200331191802.png" />
+            alt="https://i.loli.net/2020/12/26/2R8N75PQVxlKvej.png" />
     </a>
 <h2 id="jwt">JWT</h2>
 <p>JSON Web Token（缩写 JWT）是目前最流行的跨域认证解决方案。</p>
@@ -208,14 +181,14 @@
 <p>JWT 的数据结构
 它是一个很长的字符串，中间用点（.）分隔成三个部分。</p>
 <p>JWT 的三个部分依次如下。</p>
-<a class="lightgallery" href="http://qiniustorage.joyinn.top/20200331191820.png" title="token验证" data-thumbnail="http://qiniustorage.joyinn.top/20200331191820.png">
+<a class="lightgallery" href="https://i.loli.net/2020/12/26/N7aIfcqWjYh5kZl.png" title="token验证" data-thumbnail="https://i.loli.net/2020/12/26/N7aIfcqWjYh5kZl.png">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="http://qiniustorage.joyinn.top/20200331191820.png"
-            data-srcset="http://qiniustorage.joyinn.top/20200331191820.png, http://qiniustorage.joyinn.top/20200331191820.png 1.5x, http://qiniustorage.joyinn.top/20200331191820.png 2x"
+            data-src="https://i.loli.net/2020/12/26/N7aIfcqWjYh5kZl.png"
+            data-srcset="https://i.loli.net/2020/12/26/N7aIfcqWjYh5kZl.png, https://i.loli.net/2020/12/26/N7aIfcqWjYh5kZl.png 1.5x, https://i.loli.net/2020/12/26/N7aIfcqWjYh5kZl.png 2x"
             data-sizes="auto"
-            alt="http://qiniustorage.joyinn.top/20200331191820.png" />
+            alt="https://i.loli.net/2020/12/26/N7aIfcqWjYh5kZl.png" />
     </a>
 <p>Header 部分是一个 JSON 对象，描述 JWT 的元数据，
 Payload 部分也是一个 JSON 对象，用来存放实际需要传递的数据。JWT 规定了7个官方字段供选用。
@@ -634,9 +607,7 @@ Signature 部分是对前两部分的签名，防止数据篡改。</p>
 <h3 id="btw">btw</h3>
 <p>如果对这一工程实例感兴趣的话可以查看<a href="https://github.com/ZJU-PAPIC/joyinn" target="_blank" rel="noopener noreffer">joyinn</a></p>
 <p>这是一个论坛的demo，采用expressjs+mysql+vue全家桶，说不定你能有所启发呢！</p>
-</div><div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
-                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
-            </noscript></div></div></div>
+</div></div></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by Hugo | Theme is LoveIt
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/landingwind" target="_blank">wkk</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
@@ -648,5 +619,5 @@ Signature 部分是对前两部分的签名，防止数据篡改。</p>
             </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/katex/katex.min.4afae7d446ba01ebf7fff19893eaf3a1.css" integrity="md5-Svrn1Ea6Aev3//GYk&#43;rzoQ=="><link rel="stylesheet" href="/lib/katex/copy-tex.min.b1994d1b9785dd8801dbf655df7bf6d9.css" integrity="md5-sZlNG5eF3YgB2/ZV33v22Q=="><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.acf82ee47549fdc386d02768992a49ad.css" integrity="md5-rPgu5HVJ/cOG0CdomSpJrQ=="><script type="text/javascript" src="https://wkkblog.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.100efdceabf7a138f3297e437d078f74.js" integrity="md5-EA79zqv3oTjzKX5DfQePdA=="></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.ae7c5011def46b283696baf367586b5d.js" integrity="md5-rnxQEd70ayg2lrrzZ1hrXQ=="></script><script type="text/javascript" src="/lib/lunr/lunr.min.a08f2562fde4550269dfc13028ed2502.js" integrity="md5-oI8lYv3kVQJp38EwKO0lAg=="></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.b82fb8d93ce0ea6a485dfa3a0b1e7573.js" integrity="md5-uC&#43;42Tzg6mpIXfo6Cx51cw=="></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.f1ba3e22560e2eb7474f28feb4507617.js" integrity="md5-8bo&#43;IlYOLrdHTyj&#43;tFB2Fw=="></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.b80e49640d4794d4333d00db76ea22f7.js" integrity="md5-uA5JZA1HlNQzPQDbduoi9w=="></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.af8ab36589315582ccdd82f22e84bffb.js" integrity="md5-r4qzZYkxVYLM3YLyLoS/&#43;w=="></script><script type="text/javascript" src="/lib/katex/katex.min.c158c9e823b681cf535f46596b5e4eac.js" integrity="md5-wVjJ6CO2gc9TX0ZZa15OrA=="></script><script type="text/javascript" src="/lib/katex/auto-render.min.28cd0b98cd3f4fa37d52f3ffe47ad9d4.js" integrity="md5-KM0LmM0/T6N9UvP/5HrZ1A=="></script><script type="text/javascript" src="/lib/katex/copy-tex.min.bfaec7d1dea915d74a7a6d833f0ff62e.js" integrity="md5-v67H0d6pFddKem2DPw/2Lg=="></script><script type="text/javascript" src="/lib/katex/mhchem.min.1bbb252363e83547d4b2186a41eaca28.js" integrity="md5-G7slI2PoNUfUshhqQerKKA=="></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.4a48532bf0b17c058b8b6854f49de23f.js" integrity="md5-SkhTK/CxfAWLi2hU9J3iPw=="></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.7bc7989e979c4a19d97db3ab311a80fe.js" integrity="md5-e8eYnpecShnZfbOrMRqA/g=="></script></body>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.4afae7d446ba01ebf7fff19893eaf3a1.css" integrity="md5-Svrn1Ea6Aev3//GYk&#43;rzoQ=="><link rel="stylesheet" href="/lib/katex/copy-tex.min.b1994d1b9785dd8801dbf655df7bf6d9.css" integrity="md5-sZlNG5eF3YgB2/ZV33v22Q=="><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.acf82ee47549fdc386d02768992a49ad.css" integrity="md5-rPgu5HVJ/cOG0CdomSpJrQ=="><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.100efdceabf7a138f3297e437d078f74.js" integrity="md5-EA79zqv3oTjzKX5DfQePdA=="></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.b80e49640d4794d4333d00db76ea22f7.js" integrity="md5-uA5JZA1HlNQzPQDbduoi9w=="></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.af8ab36589315582ccdd82f22e84bffb.js" integrity="md5-r4qzZYkxVYLM3YLyLoS/&#43;w=="></script><script type="text/javascript" src="/lib/katex/katex.min.c158c9e823b681cf535f46596b5e4eac.js" integrity="md5-wVjJ6CO2gc9TX0ZZa15OrA=="></script><script type="text/javascript" src="/lib/katex/auto-render.min.28cd0b98cd3f4fa37d52f3ffe47ad9d4.js" integrity="md5-KM0LmM0/T6N9UvP/5HrZ1A=="></script><script type="text/javascript" src="/lib/katex/copy-tex.min.bfaec7d1dea915d74a7a6d833f0ff62e.js" integrity="md5-v67H0d6pFddKem2DPw/2Lg=="></script><script type="text/javascript" src="/lib/katex/mhchem.min.1bbb252363e83547d4b2186a41eaca28.js" integrity="md5-G7slI2PoNUfUshhqQerKKA=="></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.4a48532bf0b17c058b8b6854f49de23f.js" integrity="md5-SkhTK/CxfAWLi2hU9J3iPw=="></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.7bc7989e979c4a19d97db3ab311a80fe.js" integrity="md5-e8eYnpecShnZfbOrMRqA/g=="></script></body>
 </html>

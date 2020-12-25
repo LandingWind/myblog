@@ -66,7 +66,7 @@ github被微软收购以后推出的免费功能
 
 当用户注册好webhooks后，github会在repo发生变动后向用户注册的URL发送一个post请求
 
-{{<image src="http://qiniustorage.joyinn.top/webhook-setting.png" title="webhook设置页面">}}
+{{<image src="https://i.loli.net/2020/12/26/vxdXpuHb3FTcPhJ.png" title="webhook设置页面">}}
 
 **send me everything** 的选项将会涉及几十种事件，可参见webhooks的文档，这里我只选择了push事件需要通知
 

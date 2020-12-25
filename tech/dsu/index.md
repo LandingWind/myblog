@@ -12,13 +12,13 @@
 
 ### 数组记录元素关系
 开始的时候`key=value`表示每个元素的爸爸是自己本身
-![relation](http://qiniustorage.joyinn.top/20200207111128.png "relation")
+![relation](https://i.loli.net/2020/12/26/gzCcRMF793tUsuL.png "relation")
 然后比如`2`和`3`从属于`1` 那么就会有如下关系`arr[2] = 1`以及`arr[3] = 1`
-![relation2](http://qiniustorage.joyinn.top/20200207111846.png "relation2")
+![relation2](https://i.loli.net/2020/12/26/XvonzFV1Z38mSCl.png "relation2")
 
 ### 路径压缩
 并查集的数据储存模式可能会导致从属链过长 而导致查询效率低下 
-![route](http://qiniustorage.joyinn.top/20200207112259.png "route")
+![route](https://i.loli.net/2020/12/26/6oiRjKvUuOIt8ZM.png "route")
 比如上面的图在查询`2`的根节点的过程中 完全可以将这条路径上的所有节点直接指向`4` 这样就优化了数据结构 (换个角度讲就是减少了树的深度)
 
 ## 实现代码
