@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>大学课程 - 分类 - Melon</title>
-        <link>https://blog.joyinn.top/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/</link>
+        <link>https://landingwind.github.io/myblog/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/</link>
         <description>大学课程 - 分类 - Melon</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 10 Mar 2020 11:00:02 &#43;0800</lastBuildDate><atom:link href="https://blog.joyinn.top/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 10 Mar 2020 11:00:02 &#43;0800</lastBuildDate><atom:link href="https://landingwind.github.io/myblog/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
     <title>Min-Max算法及Alpha-Beta剪枝</title>
-    <link>https://blog.joyinn.top/tech/min-max-and-alpha-beta/</link>
+    <link>https://landingwind.github.io/myblog/tech/min-max-and-alpha-beta/</link>
     <pubDate>Tue, 10 Mar 2020 11:00:02 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://blog.joyinn.top/tech/min-max-and-alpha-beta/</guid>
+    <guid>https://landingwind.github.io/myblog/tech/min-max-and-alpha-beta/</guid>
     <description><![CDATA[适用于所有情况完全已知的游戏，并且是零和游戏。 零和游戏（Zero-sum Game）：意思就是你死我活，一方的胜利代表另一方的失败，比如，象棋]]></description>
 </item></channel>
 </rss>

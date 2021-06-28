@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>owncloud - 标签 - Melon</title>
-        <link>https://blog.joyinn.top/tags/owncloud/</link>
+        <link>https://landingwind.github.io/myblog/tags/owncloud/</link>
         <description>owncloud - 标签 - Melon</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 29 Jan 2020 22:52:02 &#43;0800</lastBuildDate><atom:link href="https://blog.joyinn.top/tags/owncloud/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 29 Jan 2020 22:52:02 &#43;0800</lastBuildDate><atom:link href="https://landingwind.github.io/myblog/tags/owncloud/" rel="self" type="application/rss+xml" /><item>
     <title>ownCloud&#43;mysql&#43;docker搭建个人云盘</title>
-    <link>https://blog.joyinn.top/tech/personal-clouddisk/</link>
+    <link>https://landingwind.github.io/myblog/tech/personal-clouddisk/</link>
     <pubDate>Wed, 29 Jan 2020 22:52:02 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://blog.joyinn.top/tech/personal-clouddisk/</guid>
+    <guid>https://landingwind.github.io/myblog/tech/personal-clouddisk/</guid>
     <description><![CDATA[记录三小时搭建ownCloud云盘全过程🆒 话不多说, 先放一张成功的登录界面图👌 step 1: 选择一个适合的开源云盘 这里有很多选择 比如老牌劲旅ownCl]]></description>
 </item></channel>
 </rss>

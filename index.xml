@@ -1,9 +1,9 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Melon</title>
-        <link>https://blog.joyinn.top/</link>
+        <link>https://landingwind.github.io/myblog/</link>
         <description>Melon</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 31 May 2020 01:00:02 &#43;0800</lastBuildDate>
-            <atom:link href="https://blog.joyinn.top/index.xml" rel="self" type="application/rss+xml" />
+            <atom:link href="https://landingwind.github.io/myblog/index.xml" rel="self" type="application/rss+xml" />
         </channel>
 </rss>
