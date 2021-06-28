@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Min-Max算法及Alpha-Beta剪枝 | Melon</title><meta name="Description" content=""><meta property="og:title" content="Min-Max算法及Alpha-Beta剪枝" />
+<meta property="og:description" content="适用于所有情况完全已知的游戏，并且是零和游戏。 零和游戏（Zero-sum Game）：意思就是你死我活，一方的胜利代表另一方的失败，比如，象棋" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://landingwind.github.io/myblog/min-max%E7%AE%97%E6%B3%95%E5%8F%8Aalpha-beta%E5%89%AA%E6%9E%9D/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-03-10T11:00:02&#43;08:00" />
+<meta property="article:modified_time" content="2020-03-10T11:00:02&#43;08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Min-Max算法及Alpha-Beta剪枝"/>
+<meta name="twitter:description" content="适用于所有情况完全已知的游戏，并且是零和游戏。 零和游戏（Zero-sum Game）：意思就是你死我活，一方的胜利代表另一方的失败，比如，象棋"/>
+<meta name="application-name" content="Melon">
+<meta name="apple-mobile-web-app-title" content="Melon"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://landingwind.github.io/myblog/min-max%E7%AE%97%E6%B3%95%E5%8F%8Aalpha-beta%E5%89%AA%E6%9E%9D/" /><link rel="prev" href="https://landingwind.github.io/myblog/%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%AE%97%E6%B3%95%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%9E%E7%8E%B0/" /><link rel="next" href="https://landingwind.github.io/myblog/hugo-docker-webhooks%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" /><link rel="stylesheet" href="/myblog/lib/normalize/normalize.min.2e7125082ec8de83a87adc70253c9c23.css" integrity="md5-LnElCC7I3oOoetxwJTycIw=="><link rel="stylesheet" href="/myblog/css/style.min.ac0f5ed27fd6fe5c5b9c11daee3fd2ac.css" integrity="md5-rA9e0n/W/lxbnBHa7j/SrA=="><link rel="stylesheet" href="/myblog/lib/fontawesome-free/all.min.76cb46c10b6c0293433b371bae2414b2.css" integrity="md5-dstGwQtsApNDOzcbriQUsg=="><link rel="stylesheet" href="/myblog/lib/animate/animate.min.bc1a6a99c43f5ccc97d2d350bde13f74.css" integrity="md5-vBpqmcQ/XMyX0tNQveE/dA=="><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Min-Max算法及Alpha-Beta剪枝",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/landingwind.github.io\/myblog\/min-max%E7%AE%97%E6%B3%95%E5%8F%8Aalpha-beta%E5%89%AA%E6%9E%9D\/"
+        },"genre": "posts","keywords": "min-max, alpha-beta","wordcount":  484 ,
+        "url": "https:\/\/landingwind.github.io\/myblog\/min-max%E7%AE%97%E6%B3%95%E5%8F%8Aalpha-beta%E5%89%AA%E6%9E%9D\/","datePublished": "2020-03-10T11:00:02+08:00","dateModified": "2020-03-10T11:00:02+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "wkk"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/myblog/" title="Melon">Melon</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/myblog/posts/"> Posts </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/myblog/" title="Melon">Melon</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/myblog/posts/" title="">Posts</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Min-Max算法及Alpha-Beta剪枝</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/landingwind" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>wkk</a></span>&nbsp;<span class="post-category">收录于 <a href="/myblog/categories/%E7%AE%97%E6%B3%95/"><i class="far fa-folder fa-fw"></i>算法</a>&nbsp;<a href="/myblog/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"><i class="far fa-folder fa-fw"></i>大学课程</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-03-10">2020-03-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 484 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><p>适用于所有情况完全已知的游戏，并且是零和游戏。
+零和游戏（Zero-sum Game）：意思就是你死我活，一方的胜利代表另一方的失败，比如，象棋，五子棋等。 完全信息（Perfect Information）：玩家知道之前所有的步骤。象棋就是完全信息，因为玩家是交替着落子，且之前的步骤都能在棋盘上体现，但是石头剪子布就不是。</p>
+<p>这样的游戏可以用树状图表示：MAX表示自己，MIN表示对手；Utility是对着一种情况给出的分数（对自己而言越高越好）</p>
+<p><figure><a class="lightgallery" href="https://i.loli.net/2020/12/26/25mVeYwD6CBXITh.jpg" title="https://i.loli.net/2020/12/26/25mVeYwD6CBXITh.jpg" data-thumbnail="https://i.loli.net/2020/12/26/25mVeYwD6CBXITh.jpg" data-sub-html="<h2>minmax</h2>">
+        <img
+            class="lazyload"
+            src="/myblog/svg/loading.min.svg"
+            data-src="https://i.loli.net/2020/12/26/25mVeYwD6CBXITh.jpg"
+            data-srcset="https://i.loli.net/2020/12/26/25mVeYwD6CBXITh.jpg, https://i.loli.net/2020/12/26/25mVeYwD6CBXITh.jpg 1.5x, https://i.loli.net/2020/12/26/25mVeYwD6CBXITh.jpg 2x"
+            data-sizes="auto"
+            alt="https://i.loli.net/2020/12/26/25mVeYwD6CBXITh.jpg" />
+    </a><figcaption class="image-caption">minmax</figcaption>
+    </figure></p>
+<p>那么自己希望最大化这一utility，对手希望最小化这一utility，所以可以通过结果反推某一步应该采取的选择。</p>
+<p><figure><a class="lightgallery" href="https://i.loli.net/2020/12/26/Lj4VviFS5cdZJ3N.jpg" title="https://i.loli.net/2020/12/26/Lj4VviFS5cdZJ3N.jpg" data-thumbnail="https://i.loli.net/2020/12/26/Lj4VviFS5cdZJ3N.jpg" data-sub-html="<h2>step1</h2>">
+        <img
+            class="lazyload"
+            src="/myblog/svg/loading.min.svg"
+            data-src="https://i.loli.net/2020/12/26/Lj4VviFS5cdZJ3N.jpg"
+            data-srcset="https://i.loli.net/2020/12/26/Lj4VviFS5cdZJ3N.jpg, https://i.loli.net/2020/12/26/Lj4VviFS5cdZJ3N.jpg 1.5x, https://i.loli.net/2020/12/26/Lj4VviFS5cdZJ3N.jpg 2x"
+            data-sizes="auto"
+            alt="https://i.loli.net/2020/12/26/Lj4VviFS5cdZJ3N.jpg" />
+    </a><figcaption class="image-caption">step1</figcaption>
+    </figure></p>
+<p><figure><a class="lightgallery" href="https://i.loli.net/2020/12/26/4npYIBkPti13qAv.jpg" title="https://i.loli.net/2020/12/26/4npYIBkPti13qAv.jpg" data-thumbnail="https://i.loli.net/2020/12/26/4npYIBkPti13qAv.jpg" data-sub-html="<h2>step2</h2>">
+        <img
+            class="lazyload"
+            src="/myblog/svg/loading.min.svg"
+            data-src="https://i.loli.net/2020/12/26/4npYIBkPti13qAv.jpg"
+            data-srcset="https://i.loli.net/2020/12/26/4npYIBkPti13qAv.jpg, https://i.loli.net/2020/12/26/4npYIBkPti13qAv.jpg 1.5x, https://i.loli.net/2020/12/26/4npYIBkPti13qAv.jpg 2x"
+            data-sizes="auto"
+            alt="https://i.loli.net/2020/12/26/4npYIBkPti13qAv.jpg" />
+    </a><figcaption class="image-caption">step2</figcaption>
+    </figure></p>
+<p><figure><a class="lightgallery" href="https://i.loli.net/2020/12/26/TPBDU5KYiZkStcA.jpg" title="https://i.loli.net/2020/12/26/TPBDU5KYiZkStcA.jpg" data-thumbnail="https://i.loli.net/2020/12/26/TPBDU5KYiZkStcA.jpg" data-sub-html="<h2>step3</h2>">
+        <img
+            class="lazyload"
+            src="/myblog/svg/loading.min.svg"
+            data-src="https://i.loli.net/2020/12/26/TPBDU5KYiZkStcA.jpg"
+            data-srcset="https://i.loli.net/2020/12/26/TPBDU5KYiZkStcA.jpg, https://i.loli.net/2020/12/26/TPBDU5KYiZkStcA.jpg 1.5x, https://i.loli.net/2020/12/26/TPBDU5KYiZkStcA.jpg 2x"
+            data-sizes="auto"
+            alt="https://i.loli.net/2020/12/26/TPBDU5KYiZkStcA.jpg" />
+    </a><figcaption class="image-caption">step3</figcaption>
+    </figure></p>
+<p><figure><a class="lightgallery" href="https://i.loli.net/2020/12/26/DOkltoeCxNwXc6G.jpg" title="https://i.loli.net/2020/12/26/DOkltoeCxNwXc6G.jpg" data-thumbnail="https://i.loli.net/2020/12/26/DOkltoeCxNwXc6G.jpg" data-sub-html="<h2>step4</h2>">
+        <img
+            class="lazyload"
+            src="/myblog/svg/loading.min.svg"
+            data-src="https://i.loli.net/2020/12/26/DOkltoeCxNwXc6G.jpg"
+            data-srcset="https://i.loli.net/2020/12/26/DOkltoeCxNwXc6G.jpg, https://i.loli.net/2020/12/26/DOkltoeCxNwXc6G.jpg 1.5x, https://i.loli.net/2020/12/26/DOkltoeCxNwXc6G.jpg 2x"
+            data-sizes="auto"
+            alt="https://i.loli.net/2020/12/26/DOkltoeCxNwXc6G.jpg" />
+    </a><figcaption class="image-caption">step4</figcaption>
+    </figure></p>
+<p>由于情况数太多需要采取剪枝算法（Alpha-Beta）来减少运算量：</p>
+<p>每个MAX结点设置一个目前已知下界alpha，每个MIN节点设置一个目前已知上界beta。当计算一个MIN结点时，如果它的beta值小于等于其父结点的alpha值，则可以立即停止此结点的计算（alpha剪枝）；当计算一个MAX结点时，如果它的alpha结点大于等于其父结点的beta值，也可以立即停止此结点的计算（beta剪枝）</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-03-10</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/myblog/min-max%E7%AE%97%E6%B3%95%E5%8F%8Aalpha-beta%E5%89%AA%E6%9E%9D/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/myblog/tags/min-max/">min-max</a>,&nbsp;<a href="/myblog/tags/alpha-beta/">alpha-beta</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/myblog/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/myblog/%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%AE%97%E6%B3%95%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%9E%E7%8E%B0/" class="prev" rel="prev" title="并查集算法概念及实现"><i class="fas fa-angle-left fa-fw"></i>并查集算法概念及实现</a>
+            <a href="/myblog/hugo-docker-webhooks%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" class="next" rel="next" title="Hugo&#43;Docker&#43;Webhooks最佳实践">Hugo&#43;Docker&#43;Webhooks最佳实践<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by Hugo | Theme is LoveIt
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/landingwind" target="_blank">wkk</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/myblog/lib/katex/katex.min.4afae7d446ba01ebf7fff19893eaf3a1.css" integrity="md5-Svrn1Ea6Aev3//GYk&#43;rzoQ=="><link rel="stylesheet" href="/myblog/lib/katex/copy-tex.min.b1994d1b9785dd8801dbf655df7bf6d9.css" integrity="md5-sZlNG5eF3YgB2/ZV33v22Q=="><link rel="stylesheet" href="/myblog/lib/cookieconsent/cookieconsent.min.acf82ee47549fdc386d02768992a49ad.css" integrity="md5-rPgu5HVJ/cOG0CdomSpJrQ=="><script type="text/javascript" src="/myblog/lib/smooth-scroll/smooth-scroll.min.100efdceabf7a138f3297e437d078f74.js" integrity="md5-EA79zqv3oTjzKX5DfQePdA=="></script><script type="text/javascript" src="/myblog/lib/lazysizes/lazysizes.min.b80e49640d4794d4333d00db76ea22f7.js" integrity="md5-uA5JZA1HlNQzPQDbduoi9w=="></script><script type="text/javascript" src="/myblog/lib/clipboard/clipboard.min.af8ab36589315582ccdd82f22e84bffb.js" integrity="md5-r4qzZYkxVYLM3YLyLoS/&#43;w=="></script><script type="text/javascript" src="/myblog/lib/katex/katex.min.c158c9e823b681cf535f46596b5e4eac.js" integrity="md5-wVjJ6CO2gc9TX0ZZa15OrA=="></script><script type="text/javascript" src="/myblog/lib/katex/auto-render.min.28cd0b98cd3f4fa37d52f3ffe47ad9d4.js" integrity="md5-KM0LmM0/T6N9UvP/5HrZ1A=="></script><script type="text/javascript" src="/myblog/lib/katex/copy-tex.min.bfaec7d1dea915d74a7a6d833f0ff62e.js" integrity="md5-v67H0d6pFddKem2DPw/2Lg=="></script><script type="text/javascript" src="/myblog/lib/katex/mhchem.min.1bbb252363e83547d4b2186a41eaca28.js" integrity="md5-G7slI2PoNUfUshhqQerKKA=="></script><script type="text/javascript" src="/myblog/lib/cookieconsent/cookieconsent.min.4a48532bf0b17c058b8b6854f49de23f.js" integrity="md5-SkhTK/CxfAWLi2hU9J3iPw=="></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/myblog/js/theme.min.7bc7989e979c4a19d97db3ab311a80fe.js" integrity="md5-e8eYnpecShnZfbOrMRqA/g=="></script></body>
+</html>

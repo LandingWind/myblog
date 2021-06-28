@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>与svg动画纠缠不清的两天 | Melon</title><meta name="Description" content=""><meta property="og:title" content="与svg动画纠缠不清的两天" />
+<meta property="og:description" content="这次的文章主题是svg，预备知识基本是没有的 有几个应用过程中遇到的bug，po出来供大家参考避免走同样的弯路。 最近写了个社团的秋纳报名表，刚" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://landingwind.github.io/myblog/%E4%B8%8Esvg%E5%8A%A8%E7%94%BB%E7%BA%A0%E7%BC%A0%E4%B8%8D%E6%B8%85%E7%9A%84%E4%B8%A4%E5%A4%A9/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-11-20T11:27:30&#43;08:00" />
+<meta property="article:modified_time" content="2018-11-20T11:27:30&#43;08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="与svg动画纠缠不清的两天"/>
+<meta name="twitter:description" content="这次的文章主题是svg，预备知识基本是没有的 有几个应用过程中遇到的bug，po出来供大家参考避免走同样的弯路。 最近写了个社团的秋纳报名表，刚"/>
+<meta name="application-name" content="Melon">
+<meta name="apple-mobile-web-app-title" content="Melon"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://landingwind.github.io/myblog/%E4%B8%8Esvg%E5%8A%A8%E7%94%BB%E7%BA%A0%E7%BC%A0%E4%B8%8D%E6%B8%85%E7%9A%84%E4%B8%A4%E5%A4%A9/" /><link rel="next" href="https://landingwind.github.io/myblog/%E5%9F%BA%E4%BA%8Ejwt%E7%9A%84%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E6%80%81%E7%AE%A1%E7%90%86/" /><link rel="stylesheet" href="/myblog/lib/normalize/normalize.min.2e7125082ec8de83a87adc70253c9c23.css" integrity="md5-LnElCC7I3oOoetxwJTycIw=="><link rel="stylesheet" href="/myblog/css/style.min.ac0f5ed27fd6fe5c5b9c11daee3fd2ac.css" integrity="md5-rA9e0n/W/lxbnBHa7j/SrA=="><link rel="stylesheet" href="/myblog/lib/fontawesome-free/all.min.76cb46c10b6c0293433b371bae2414b2.css" integrity="md5-dstGwQtsApNDOzcbriQUsg=="><link rel="stylesheet" href="/myblog/lib/animate/animate.min.bc1a6a99c43f5ccc97d2d350bde13f74.css" integrity="md5-vBpqmcQ/XMyX0tNQveE/dA=="><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "与svg动画纠缠不清的两天",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/landingwind.github.io\/myblog\/%E4%B8%8Esvg%E5%8A%A8%E7%94%BB%E7%BA%A0%E7%BC%A0%E4%B8%8D%E6%B8%85%E7%9A%84%E4%B8%A4%E5%A4%A9\/"
+        },"genre": "posts","keywords": "svg","wordcount":  1493 ,
+        "url": "https:\/\/landingwind.github.io\/myblog\/%E4%B8%8Esvg%E5%8A%A8%E7%94%BB%E7%BA%A0%E7%BC%A0%E4%B8%8D%E6%B8%85%E7%9A%84%E4%B8%A4%E5%A4%A9\/","datePublished": "2018-11-20T11:27:30+08:00","dateModified": "2018-11-20T11:27:30+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "wkk"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/myblog/" title="Melon">Melon</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/myblog/posts/"> Posts </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/myblog/" title="Melon">Melon</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/myblog/posts/" title="">Posts</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">与svg动画纠缠不清的两天</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/landingwind" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>wkk</a></span>&nbsp;<span class="post-category">收录于 <a href="/myblog/categories/web/"><i class="far fa-folder fa-fw"></i>web</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2018-11-20">2018-11-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1493 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><p>这次的文章主题是svg，预备知识基本是没有的</p>
+<p>有几个应用过程中遇到的bug，po出来供大家参考避免走同样的弯路。</p>
+<p>最近写了个社团的秋纳报名表，刚好UI设计人员给的设计稿有svg切图，以前从来没有接触过svg，这次有时间就尝试了一下，感觉还不错，虽然对低版本浏览器的兼容性是真的差</p>
+<p>svg最大的优点就是矢量，资源体积很小，但是显示效果非常棒，对各种大小屏幕的适配性也是极其ok，耗费的主要是即时的计算和渲染</p>
+<p>百度或者google一下，很容易找到关于svg的文档，也很容易找到关于svg嵌入html的几种方式的介绍</p>
+<p>目前兼容性最好的是embed，不过调整大小我觉得麻烦，最后我还是直接用的svg标签形式嵌入网页。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">svg</span> 
+    <span class="na">xmlns</span><span class="o">=</span><span class="s">&#34;http://www.w3.org/2000/svg&#34;</span>
+    <span class="na">xmlns:xlink</span><span class="o">=</span><span class="s">&#34;http://www.w3.org/1999/xlink&#34;</span> 
+    <span class="na">version</span><span class="o">=</span><span class="s">&#34;1.1&#34;</span>
+    <span class="na">width</span><span class="o">=</span><span class="s">&#34;100%&#34;</span> <span class="na">height</span><span class="o">=</span><span class="s">&#34;100%&#34;</span>
+    <span class="na">viewBox</span><span class="o">=</span><span class="s">&#34;0 0 2000 2300&#34;</span>
+    <span class="p">&gt;</span>
+    <span class="c">&lt;!-- background --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">image</span>  <span class="na">x</span><span class="o">=</span><span class="s">&#34;0&#34;</span> <span class="na">y</span><span class="o">=</span><span class="s">&#34;0&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;100%&#34;</span> <span class="na">xlink:href</span><span class="o">=</span><span class="s">&#34;./static/Rectangle.svg&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">image</span><span class="p">&gt;</span>
+    <span class="c">&lt;!-- moon --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">image</span>  <span class="na">id</span><span class="o">=</span><span class="s">&#34;moon2&#34;</span> <span class="na">x</span><span class="o">=</span><span class="s">&#34;95%&#34;</span> <span class="na">y</span><span class="o">=</span><span class="s">&#34;24%&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;11%&#34;</span> <span class="na">xlink:href</span><span class="o">=</span><span class="s">&#34;./static/Oval Copy 3.svg&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">image</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">image</span>  <span class="na">id</span><span class="o">=</span><span class="s">&#34;moon1&#34;</span> <span class="na">x</span><span class="o">=</span><span class="s">&#34;-10%&#34;</span> <span class="na">y</span><span class="o">=</span><span class="s">&#34;10%&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;16%&#34;</span> <span class="na">xlink:href</span><span class="o">=</span><span class="s">&#34;./static/Group.svg&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">image</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">image</span>  <span class="na">id</span><span class="o">=</span><span class="s">&#34;moon3&#34;</span> <span class="na">x</span><span class="o">=</span><span class="s">&#34;80%&#34;</span> <span class="na">y</span><span class="o">=</span><span class="s">&#34;63%&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;14%&#34;</span> <span class="na">xlink:href</span><span class="o">=</span><span class="s">&#34;./static/Oval Copy 3.svg&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">image</span><span class="p">&gt;</span>
+    <span class="c">&lt;!-- cloud --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">image</span>  <span class="na">id</span><span class="o">=</span><span class="s">&#34;cloud1&#34;</span> <span class="na">x</span><span class="o">=</span><span class="s">&#34;-8%&#34;</span> <span class="na">y</span><span class="o">=</span><span class="s">&#34;23%&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;16%&#34;</span> <span class="na">xlink:href</span><span class="o">=</span><span class="s">&#34;./static/cloud1.svg&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">image</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">image</span>  <span class="na">id</span><span class="o">=</span><span class="s">&#34;cloud2&#34;</span> <span class="na">x</span><span class="o">=</span><span class="s">&#34;45%&#34;</span> <span class="na">y</span><span class="o">=</span><span class="s">&#34;-13%&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;45%&#34;</span> <span class="na">xlink:href</span><span class="o">=</span><span class="s">&#34;./static/cloud2.svg&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">image</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">image</span>  <span class="na">id</span><span class="o">=</span><span class="s">&#34;cloud3&#34;</span> <span class="na">x</span><span class="o">=</span><span class="s">&#34;60%&#34;</span> <span class="na">y</span><span class="o">=</span><span class="s">&#34;-13%&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;35%&#34;</span> <span class="na">xlink:href</span><span class="o">=</span><span class="s">&#34;./static/cloud3.svg&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">image</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">image</span>  <span class="na">id</span><span class="o">=</span><span class="s">&#34;cloud4&#34;</span> <span class="na">x</span><span class="o">=</span><span class="s">&#34;95%&#34;</span> <span class="na">y</span><span class="o">=</span><span class="s">&#34;35%&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;10%&#34;</span> <span class="na">xlink:href</span><span class="o">=</span><span class="s">&#34;./static/cloud4.svg&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">image</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">image</span>  <span class="na">id</span><span class="o">=</span><span class="s">&#34;cloud5&#34;</span> <span class="na">x</span><span class="o">=</span><span class="s">&#34;30%&#34;</span> <span class="na">y</span><span class="o">=</span><span class="s">&#34;61%&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;18%&#34;</span> <span class="na">xlink:href</span><span class="o">=</span><span class="s">&#34;./static/cloud5.svg&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">image</span><span class="p">&gt;</span>
+    <span class="c">&lt;!-- line --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">image</span>  <span class="na">id</span><span class="o">=</span><span class="s">&#34;line&#34;</span> <span class="na">x</span><span class="o">=</span><span class="s">&#34;0%&#34;</span> <span class="na">y</span><span class="o">=</span><span class="s">&#34;2%&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;100%&#34;</span>
+        <span class="na">xlink:href</span><span class="o">=</span><span class="s">&#34;./static/line.svg&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">image</span><span class="p">&gt;</span>
+    <span class="c">&lt;!-- title --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">image</span>  <span class="na">id</span><span class="o">=</span><span class="s">&#34;title&#34;</span> <span class="na">x</span><span class="o">=</span><span class="s">&#34;30%&#34;</span> <span class="na">y</span><span class="o">=</span><span class="s">&#34;37%&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;40%&#34;</span>
+        <span class="na">xlink:href</span><span class="o">=</span><span class="s">&#34;./static/UIslices/PAPIC.png&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">image</span><span class="p">&gt;</span>
+    <span class="c">&lt;!-- word --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">text</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;svgtext&#34;</span> <span class="na">opacity</span><span class="o">=</span><span class="s">&#34;0&#34;</span> <span class="na">x</span><span class="o">=</span><span class="s">&#34;32.5%&#34;</span> <span class="na">y</span><span class="o">=</span><span class="s">&#34;48%&#34;</span> <span class="na">fill</span><span class="o">=</span><span class="s">&#34;white&#34;</span><span class="p">&gt;</span>浙大勤创秋季纳新<span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>
+    <span class="c">&lt;!-- word-underline --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">line</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;textline&#34;</span> <span class="na">opacity</span><span class="o">=</span><span class="s">&#34;0&#34;</span> <span class="na">x1</span><span class="o">=</span><span class="s">&#34;25%&#34;</span> <span class="na">y1</span><span class="o">=</span><span class="s">&#34;41.5%&#34;</span> <span class="na">x2</span><span class="o">=</span><span class="s">&#34;75%&#34;</span> <span class="na">y2</span><span class="o">=</span><span class="s">&#34;41.5%&#34;</span> <span class="na">stroke</span><span class="o">=</span><span class="s">&#34;white&#34;</span> <span class="na">stroke-width</span><span class="o">=</span><span class="s">&#34;2&#34;</span><span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">svg</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>php主体页面插入svg以及其子元素，链接css文件获取相应元素的动画代码</p>
+<p>这样写在当代大多数浏览器上运行流畅，没有任何问题(不包括IE系列和edge) 但是到了各种机型的兼容性测试的时候，发现个别ios版本的微信和qq的内置浏览器无法运行，显示为一片空白</p>
+<p><strong>强烈吐槽腾讯的x5内核的浏览器！</strong></p>
+<p>开始以为是浏览器版本低，不支持svg。不支持就显示静态图片咯！</p>
+<p>所以我添加了js代码在网页运行开始判断是否支持svg功能。如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span><span class="p">&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">SVGRect</span> <span class="o">!==</span> <span class="s2">&#34;undefined&#34;</span><span class="p">)</span> 
+    <span class="p">{</span>  <span class="cm">/* If the browser does support SVG. */</span> 
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;support svg!&#34;</span><span class="p">);</span>
+    <span class="c1">//$(&#34;embed&#34;).hide();
+</span><span class="c1"></span>    <span class="p">}</span>
+    <span class="k">else</span> 
+    <span class="p">{</span>  <span class="cm">/* If the browser does not support SVG. */</span> 
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;do not support svg!&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>但是没用啊，所有的机子都告诉我他是支持svg的，真是打肿脸充胖子。气死！</p>
+<p>这里经过了漫长的搜索，baidu、bing、yahoo、google一个个搜过去，中间发现了一个提供各种浏览器版本对于各种功能的兼容性的信息网，收藏！<a href="https://caniuse.com/" target="_blank" rel="noopener noreffer">https://caniuse.com/</a></p>
+<p>经过不断的尝试，发现最大的问题在于svg爸爸下面的image子标签，显示有问题；而其他建立的line、text标签毫无问题，只是因为颜色是白色，在背景不显示的情况下看不出来。 怎么办？ 继续google，不断改换关键字，各种尝试，无果，放弃，睡觉！</p>
+<p>最终解决这个问题的是js去动态渲染，这个方法成功解决了浏览器的兼容的问题，当然，我们不管IE9版本以下的破烂了。</p>
+<p>这里推荐两个svg的js框架。分别是 <strong>svg.js</strong> 和 <strong>snap.svg</strong>。 我最后用的是svg.js，因为根据别人的博客写到，功能虽少些，但是兼容性更加好。自然选他了。</p>
+<p>文档写的很明白，这里就不作更多关于这个框架的介绍了。确实方便，css3代码不用写了，网页dom树只要写好一个根节点，所有的渲染都通过js生成，恩很react。 下面展示一下我的简单动画所需的js代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span><span class="p">&gt;</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">draw</span> <span class="o">=</span> <span class="nx">SVG</span><span class="p">(</span><span class="s1">&#39;mysvgbox&#39;</span><span class="p">).</span><span class="nx">size</span><span class="p">(</span><span class="s1">&#39;100%&#39;</span><span class="p">,</span><span class="s1">&#39;100%&#39;</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">image</span> <span class="o">=</span> <span class="nx">draw</span><span class="p">.</span><span class="nx">image</span><span class="p">(</span><span class="s1">&#39;static/Rectangle.png&#39;</span><span class="p">);</span>
+        <span class="nx">image</span><span class="p">.</span><span class="nx">attr</span><span class="p">({</span><span class="nx">x</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span><span class="nx">y</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span><span class="nx">id</span><span class="o">:</span><span class="s1">&#39;svgboxbgpic&#39;</span><span class="p">});</span>
+        <span class="nx">image</span><span class="p">.</span><span class="nx">size</span><span class="p">(</span><span class="s1">&#39;100%&#39;</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#svgboxbgpic&#34;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">,</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+
+        <span class="kd">var</span> <span class="nx">moon1</span> <span class="o">=</span> <span class="nx">draw</span><span class="p">.</span><span class="nx">image</span><span class="p">(</span><span class="s1">&#39;static/Group.svg&#39;</span><span class="p">);</span>
+        <span class="nx">moon1</span><span class="p">.</span><span class="nx">attr</span><span class="p">({</span><span class="nx">width</span><span class="o">:</span><span class="s1">&#39;16%&#39;</span><span class="p">,</span><span class="nx">height</span><span class="o">:</span><span class="s1">&#39;16%&#39;</span><span class="p">,</span><span class="nx">x</span><span class="o">:</span><span class="s1">&#39;-10%&#39;</span><span class="p">,</span><span class="nx">y</span><span class="o">:</span><span class="s1">&#39;10%&#39;</span><span class="p">});</span>
+        <span class="nx">moon1</span><span class="p">.</span><span class="nx">animate</span><span class="p">({</span><span class="nx">duration</span><span class="o">:</span><span class="mi">1500</span><span class="p">}).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;20%&#39;</span><span class="p">,</span><span class="s1">&#39;10%&#39;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">animate</span><span class="p">({</span><span class="nx">duration</span><span class="o">:</span><span class="mi">300</span><span class="p">}).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;22%&#39;</span><span class="p">,</span><span class="s1">&#39;10%&#39;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">animate</span><span class="p">({</span><span class="nx">duration</span><span class="o">:</span><span class="mi">300</span><span class="p">}).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;20%&#39;</span><span class="p">,</span><span class="s1">&#39;10%&#39;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">animate</span><span class="p">({</span><span class="nx">duration</span><span class="o">:</span><span class="mi">300</span><span class="p">}).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;22%&#39;</span><span class="p">,</span><span class="s1">&#39;10%&#39;</span><span class="p">);</span>
+
+        <span class="kd">var</span> <span class="nx">moon2</span> <span class="o">=</span> <span class="nx">draw</span><span class="p">.</span><span class="nx">image</span><span class="p">(</span><span class="s1">&#39;static/Oval Copy 3.svg&#39;</span><span class="p">);</span>
+        <span class="nx">moon2</span><span class="p">.</span><span class="nx">attr</span><span class="p">({</span><span class="nx">width</span><span class="o">:</span><span class="s1">&#39;11%&#39;</span><span class="p">,</span><span class="nx">height</span><span class="o">:</span><span class="s1">&#39;11%&#39;</span><span class="p">,</span><span class="nx">x</span><span class="o">:</span><span class="s1">&#39;95%&#39;</span><span class="p">,</span><span class="nx">y</span><span class="o">:</span><span class="s1">&#39;24%&#39;</span><span class="p">});</span>
+        <span class="nx">moon2</span><span class="p">.</span><span class="nx">animate</span><span class="p">({</span><span class="nx">duration</span><span class="o">:</span><span class="mi">3000</span><span class="p">}).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;65%&#39;</span><span class="p">,</span><span class="s1">&#39;24%&#39;</span><span class="p">);</span>   
+
+        <span class="kd">var</span> <span class="nx">moon3</span> <span class="o">=</span> <span class="nx">draw</span><span class="p">.</span><span class="nx">image</span><span class="p">(</span><span class="s1">&#39;static/Oval Copy 3.svg&#39;</span><span class="p">);</span>
+        <span class="nx">moon3</span><span class="p">.</span><span class="nx">attr</span><span class="p">({</span><span class="nx">width</span><span class="o">:</span><span class="s1">&#39;14%&#39;</span><span class="p">,</span><span class="nx">height</span><span class="o">:</span><span class="s1">&#39;14%&#39;</span><span class="p">,</span><span class="nx">x</span><span class="o">:</span><span class="s1">&#39;80%&#39;</span><span class="p">,</span><span class="nx">y</span><span class="o">:</span><span class="s1">&#39;63%&#39;</span><span class="p">});</span>
+
+        <span class="kd">var</span> <span class="nx">cloud1</span> <span class="o">=</span> <span class="nx">draw</span><span class="p">.</span><span class="nx">image</span><span class="p">(</span><span class="s1">&#39;static/cloud1.svg&#39;</span><span class="p">);</span>
+        <span class="nx">cloud1</span><span class="p">.</span><span class="nx">attr</span><span class="p">({</span><span class="nx">width</span><span class="o">:</span><span class="s1">&#39;18%&#39;</span><span class="p">,</span><span class="nx">height</span><span class="o">:</span><span class="s1">&#39;30%&#39;</span><span class="p">,</span><span class="nx">x</span><span class="o">:</span><span class="s1">&#39;-10%&#39;</span><span class="p">,</span><span class="nx">y</span><span class="o">:</span><span class="s1">&#39;23%&#39;</span><span class="p">});</span>
+        <span class="nx">cloud1</span><span class="p">.</span><span class="nx">animate</span><span class="p">({</span><span class="nx">duration</span><span class="o">:</span><span class="mi">1500</span><span class="p">}).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;-2%&#39;</span><span class="p">,</span><span class="s1">&#39;23%&#39;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">animate</span><span class="p">(</span><span class="mi">300</span><span class="p">).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;-3%&#39;</span><span class="p">,</span><span class="s1">&#39;23%&#39;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">animate</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;-1%&#39;</span><span class="p">,</span><span class="s1">&#39;23%&#39;</span><span class="p">);</span>  
+
+        <span class="kd">var</span> <span class="nx">cloud2</span> <span class="o">=</span> <span class="nx">draw</span><span class="p">.</span><span class="nx">image</span><span class="p">(</span><span class="s1">&#39;static/cloud2.svg&#39;</span><span class="p">);</span>
+        <span class="nx">cloud2</span><span class="p">.</span><span class="nx">attr</span><span class="p">({</span><span class="nx">width</span><span class="o">:</span><span class="s1">&#39;45%&#39;</span><span class="p">,</span><span class="nx">height</span><span class="o">:</span><span class="s1">&#39;27%&#39;</span><span class="p">,</span><span class="nx">x</span><span class="o">:</span><span class="s1">&#39;45%&#39;</span><span class="p">,</span><span class="nx">y</span><span class="o">:</span><span class="s1">&#39;-13%&#39;</span><span class="p">});</span>
+        <span class="nx">cloud2</span><span class="p">.</span><span class="nx">animate</span><span class="p">(</span><span class="mi">1500</span><span class="p">).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;45%&#39;</span><span class="p">,</span><span class="s1">&#39;-2%&#39;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">animate</span><span class="p">(</span><span class="mi">300</span><span class="p">).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;45%&#39;</span><span class="p">,</span><span class="s1">&#39;-4%&#39;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">animate</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;45%&#39;</span><span class="p">,</span><span class="s1">&#39;-2%&#39;</span><span class="p">);</span>
+
+        <span class="kd">var</span> <span class="nx">cloud3</span> <span class="o">=</span> <span class="nx">draw</span><span class="p">.</span><span class="nx">image</span><span class="p">(</span><span class="s1">&#39;static/cloud3.svg&#39;</span><span class="p">);</span>
+        <span class="nx">cloud3</span><span class="p">.</span><span class="nx">attr</span><span class="p">({</span><span class="nx">width</span><span class="o">:</span><span class="s1">&#39;35%&#39;</span><span class="p">,</span><span class="nx">height</span><span class="o">:</span><span class="s1">&#39;23%&#39;</span><span class="p">,</span><span class="nx">x</span><span class="o">:</span><span class="s1">&#39;60%&#39;</span><span class="p">,</span><span class="nx">y</span><span class="o">:</span><span class="s1">&#39;-13%&#39;</span><span class="p">});</span>
+        <span class="nx">cloud3</span><span class="p">.</span><span class="nx">animate</span><span class="p">(</span><span class="mi">1500</span><span class="p">).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;60%&#39;</span><span class="p">,</span><span class="s1">&#39;-2%&#39;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">animate</span><span class="p">(</span><span class="mi">250</span><span class="p">).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;60%&#39;</span><span class="p">,</span><span class="s1">&#39;-6%&#39;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">animate</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;60%&#39;</span><span class="p">,</span><span class="s1">&#39;-3%&#39;</span><span class="p">);</span>     
+
+        <span class="kd">var</span> <span class="nx">cloud4</span> <span class="o">=</span> <span class="nx">draw</span><span class="p">.</span><span class="nx">image</span><span class="p">(</span><span class="s1">&#39;static/cloud4.svg&#39;</span><span class="p">);</span>
+        <span class="nx">cloud4</span><span class="p">.</span><span class="nx">attr</span><span class="p">({</span><span class="nx">width</span><span class="o">:</span><span class="s1">&#39;9%&#39;</span><span class="p">,</span><span class="nx">height</span><span class="o">:</span><span class="s1">&#39;15%&#39;</span><span class="p">,</span><span class="nx">x</span><span class="o">:</span><span class="s1">&#39;97%&#39;</span><span class="p">,</span><span class="nx">y</span><span class="o">:</span><span class="s1">&#39;35%&#39;</span><span class="p">});</span>
+        <span class="nx">cloud4</span><span class="p">.</span><span class="nx">animate</span><span class="p">(</span><span class="mi">1500</span><span class="p">).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;91%&#39;</span><span class="p">,</span><span class="s1">&#39;35%&#39;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">animate</span><span class="p">(</span><span class="mi">300</span><span class="p">).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;92%&#39;</span><span class="p">,</span><span class="s1">&#39;35%&#39;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">animate</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;91%&#39;</span><span class="p">,</span><span class="s1">&#39;35%&#39;</span><span class="p">);</span>
+
+        <span class="kd">var</span> <span class="nx">cloud5</span> <span class="o">=</span> <span class="nx">draw</span><span class="p">.</span><span class="nx">image</span><span class="p">(</span><span class="s1">&#39;static/cloud5.svg&#39;</span><span class="p">);</span>
+        <span class="nx">cloud5</span><span class="p">.</span><span class="nx">attr</span><span class="p">({</span><span class="nx">width</span><span class="o">:</span><span class="s1">&#39;18%&#39;</span><span class="p">,</span><span class="nx">height</span><span class="o">:</span><span class="s1">&#39;15%&#39;</span><span class="p">,</span><span class="nx">x</span><span class="o">:</span><span class="s1">&#39;30%&#39;</span><span class="p">,</span><span class="nx">y</span><span class="o">:</span><span class="s1">&#39;61%&#39;</span><span class="p">});</span> 
+        <span class="nx">cloud5</span><span class="p">.</span><span class="nx">animate</span><span class="p">(</span><span class="mi">2000</span><span class="p">).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;30%&#39;</span><span class="p">,</span><span class="s1">&#39;55%&#39;</span><span class="p">);</span>
+
+        <span class="kd">var</span> <span class="nx">line</span> <span class="o">=</span> <span class="nx">draw</span><span class="p">.</span><span class="nx">image</span><span class="p">(</span><span class="s1">&#39;static/line.svg&#39;</span><span class="p">);</span>
+        <span class="nx">line</span><span class="p">.</span><span class="nx">attr</span><span class="p">({</span><span class="nx">width</span><span class="o">:</span><span class="s1">&#39;100%&#39;</span><span class="p">,</span><span class="nx">height</span><span class="o">:</span><span class="s1">&#39;100%&#39;</span><span class="p">,</span><span class="nx">x</span><span class="o">:</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="nx">y</span><span class="o">:</span><span class="s1">&#39;-2%&#39;</span><span class="p">});</span>
+        <span class="nx">line</span><span class="p">.</span><span class="nx">animate</span><span class="p">(</span><span class="mi">2000</span><span class="p">).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;-12%&#39;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">animate</span><span class="p">(</span><span class="mi">2000</span><span class="p">).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;-6%&#39;</span><span class="p">);</span>  
+
+        <span class="kd">var</span> <span class="nx">title</span> <span class="o">=</span> <span class="nx">draw</span><span class="p">.</span><span class="nx">image</span><span class="p">(</span><span class="s1">&#39;static/UIslices/PAPIC.png&#39;</span><span class="p">);</span>
+        <span class="nx">title</span><span class="p">.</span><span class="nx">attr</span><span class="p">({</span><span class="nx">width</span><span class="o">:</span><span class="s1">&#39;40%&#39;</span><span class="p">,</span><span class="nx">height</span><span class="o">:</span><span class="s1">&#39;15%&#39;</span><span class="p">,</span><span class="nx">x</span><span class="o">:</span><span class="s1">&#39;30%&#39;</span><span class="p">,</span><span class="nx">y</span><span class="o">:</span><span class="s1">&#39;37%&#39;</span><span class="p">});</span>
+        <span class="nx">title</span><span class="p">.</span><span class="nx">animate</span><span class="p">(</span><span class="mi">1500</span><span class="p">).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;30%&#39;</span><span class="p">,</span><span class="s1">&#39;25%&#39;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">animate</span><span class="p">(</span><span class="mi">1500</span><span class="p">).</span><span class="nx">move</span><span class="p">(</span><span class="s1">&#39;30%&#39;</span><span class="p">,</span><span class="s1">&#39;30%&#39;</span><span class="p">);</span>
+
+        <span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">draw</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s2">&#34;浙大勤创秋季纳新&#34;</span><span class="p">);</span>
+        <span class="nx">text</span><span class="p">.</span><span class="nx">attr</span><span class="p">({</span><span class="nx">x</span><span class="o">:</span><span class="s1">&#39;32.5%&#39;</span><span class="p">,</span><span class="nx">y</span><span class="o">:</span><span class="s1">&#39;48%&#39;</span><span class="p">,</span><span class="nx">fill</span><span class="o">:</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="nx">opacity</span><span class="o">:</span><span class="mi">0</span><span class="p">})</span>
+        <span class="nx">text</span><span class="p">.</span><span class="nx">animate</span><span class="p">({</span><span class="nx">duration</span><span class="o">:</span><span class="mi">1000</span><span class="p">,</span><span class="nx">delay</span><span class="o">:</span><span class="mi">3000</span><span class="p">}).</span><span class="nx">attr</span><span class="p">({</span><span class="nx">opacity</span><span class="o">:</span><span class="mi">1</span><span class="p">});</span>
+
+        <span class="kd">var</span> <span class="nx">textline</span> <span class="o">=</span> <span class="nx">draw</span><span class="p">.</span><span class="nx">line</span><span class="p">().</span><span class="nx">stroke</span><span class="p">({</span><span class="nx">width</span><span class="o">:</span><span class="mi">2</span><span class="p">});</span>
+        <span class="nx">textline</span><span class="p">.</span><span class="nx">attr</span><span class="p">({</span><span class="nx">x1</span><span class="o">:</span><span class="s2">&#34;25%&#34;</span><span class="p">,</span><span class="nx">y1</span><span class="o">:</span><span class="s2">&#34;45%&#34;</span><span class="p">,</span><span class="nx">x2</span><span class="o">:</span><span class="s2">&#34;25%&#34;</span><span class="p">,</span><span class="nx">y2</span><span class="o">:</span><span class="s2">&#34;45%&#34;</span><span class="p">,</span><span class="nx">stroke</span><span class="o">:</span><span class="s2">&#34;white&#34;</span><span class="p">,</span><span class="nx">opacity</span><span class="o">:</span><span class="mi">0</span><span class="p">});</span>
+        <span class="nx">textline</span><span class="p">.</span><span class="nx">animate</span><span class="p">({</span><span class="nx">duration</span><span class="o">:</span><span class="mi">300</span><span class="p">,</span><span class="nx">delay</span><span class="o">:</span><span class="mi">3500</span><span class="p">}).</span><span class="nx">attr</span><span class="p">({</span><span class="nx">opacity</span><span class="o">:</span><span class="mf">0.8</span><span class="p">,</span><span class="nx">x2</span><span class="o">:</span><span class="s1">&#39;75%&#39;</span><span class="p">});</span>
+    <span class="p">})</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这是我的根节点</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;mysvgbox&#34;</span><span class="p">&gt;</span>
+    <span class="c">&lt;!--will insert here--&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>当然这个svg.js还有更有意思的东西，只是我的动画太简单了用不上。以后有时间一定好好玩玩</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2018-11-20</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/myblog/%E4%B8%8Esvg%E5%8A%A8%E7%94%BB%E7%BA%A0%E7%BC%A0%E4%B8%8D%E6%B8%85%E7%9A%84%E4%B8%A4%E5%A4%A9/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/myblog/tags/svg/">svg</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/myblog/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/myblog/%E5%9F%BA%E4%BA%8Ejwt%E7%9A%84%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E6%80%81%E7%AE%A1%E7%90%86/" class="next" rel="next" title="基于JWT的用户登录态管理">基于JWT的用户登录态管理<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by Hugo | Theme is LoveIt
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/landingwind" target="_blank">wkk</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/myblog/lib/katex/katex.min.4afae7d446ba01ebf7fff19893eaf3a1.css" integrity="md5-Svrn1Ea6Aev3//GYk&#43;rzoQ=="><link rel="stylesheet" href="/myblog/lib/katex/copy-tex.min.b1994d1b9785dd8801dbf655df7bf6d9.css" integrity="md5-sZlNG5eF3YgB2/ZV33v22Q=="><link rel="stylesheet" href="/myblog/lib/cookieconsent/cookieconsent.min.acf82ee47549fdc386d02768992a49ad.css" integrity="md5-rPgu5HVJ/cOG0CdomSpJrQ=="><script type="text/javascript" src="/myblog/lib/smooth-scroll/smooth-scroll.min.100efdceabf7a138f3297e437d078f74.js" integrity="md5-EA79zqv3oTjzKX5DfQePdA=="></script><script type="text/javascript" src="/myblog/lib/lazysizes/lazysizes.min.b80e49640d4794d4333d00db76ea22f7.js" integrity="md5-uA5JZA1HlNQzPQDbduoi9w=="></script><script type="text/javascript" src="/myblog/lib/clipboard/clipboard.min.af8ab36589315582ccdd82f22e84bffb.js" integrity="md5-r4qzZYkxVYLM3YLyLoS/&#43;w=="></script><script type="text/javascript" src="/myblog/lib/katex/katex.min.c158c9e823b681cf535f46596b5e4eac.js" integrity="md5-wVjJ6CO2gc9TX0ZZa15OrA=="></script><script type="text/javascript" src="/myblog/lib/katex/auto-render.min.28cd0b98cd3f4fa37d52f3ffe47ad9d4.js" integrity="md5-KM0LmM0/T6N9UvP/5HrZ1A=="></script><script type="text/javascript" src="/myblog/lib/katex/copy-tex.min.bfaec7d1dea915d74a7a6d833f0ff62e.js" integrity="md5-v67H0d6pFddKem2DPw/2Lg=="></script><script type="text/javascript" src="/myblog/lib/katex/mhchem.min.1bbb252363e83547d4b2186a41eaca28.js" integrity="md5-G7slI2PoNUfUshhqQerKKA=="></script><script type="text/javascript" src="/myblog/lib/cookieconsent/cookieconsent.min.4a48532bf0b17c058b8b6854f49de23f.js" integrity="md5-SkhTK/CxfAWLi2hU9J3iPw=="></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/myblog/js/theme.min.7bc7989e979c4a19d97db3ab311a80fe.js" integrity="md5-e8eYnpecShnZfbOrMRqA/g=="></script></body>
+</html>

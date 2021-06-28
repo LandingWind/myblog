@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>React源码阅读笔记 | Melon</title><meta name="Description" content=""><meta property="og:title" content="React源码阅读笔记" />
+<meta property="og:description" content="记录React源码阅读的一些收获 always updating&hellip; Flow and Rollup flow flow是辅助JavaScript的静态类型检查工具，相对于TypeScript来说，不需要改写" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://landingwind.github.io/myblog/react%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-04-05T22:03:08&#43;08:00" />
+<meta property="article:modified_time" content="2020-04-06T13:47:08&#43;08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="React源码阅读笔记"/>
+<meta name="twitter:description" content="记录React源码阅读的一些收获 always updating&hellip; Flow and Rollup flow flow是辅助JavaScript的静态类型检查工具，相对于TypeScript来说，不需要改写"/>
+<meta name="application-name" content="Melon">
+<meta name="apple-mobile-web-app-title" content="Melon"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://landingwind.github.io/myblog/react%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" /><link rel="prev" href="https://landingwind.github.io/myblog/groupcache%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" /><link rel="next" href="https://landingwind.github.io/myblog/nsq%E5%88%9D%E6%8E%A2/" /><link rel="stylesheet" href="/myblog/lib/normalize/normalize.min.2e7125082ec8de83a87adc70253c9c23.css" integrity="md5-LnElCC7I3oOoetxwJTycIw=="><link rel="stylesheet" href="/myblog/css/style.min.ac0f5ed27fd6fe5c5b9c11daee3fd2ac.css" integrity="md5-rA9e0n/W/lxbnBHa7j/SrA=="><link rel="stylesheet" href="/myblog/lib/fontawesome-free/all.min.76cb46c10b6c0293433b371bae2414b2.css" integrity="md5-dstGwQtsApNDOzcbriQUsg=="><link rel="stylesheet" href="/myblog/lib/animate/animate.min.bc1a6a99c43f5ccc97d2d350bde13f74.css" integrity="md5-vBpqmcQ/XMyX0tNQveE/dA=="><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "React源码阅读笔记",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/landingwind.github.io\/myblog\/react%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0\/"
+        },"genre": "posts","keywords": "react","wordcount":  2802 ,
+        "url": "https:\/\/landingwind.github.io\/myblog\/react%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0\/","datePublished": "2020-04-05T22:03:08+08:00","dateModified": "2020-04-06T13:47:08+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "wkk"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/myblog/" title="Melon">Melon</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/myblog/posts/"> Posts </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/myblog/" title="Melon">Melon</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/myblog/posts/" title="">Posts</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">React源码阅读笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/landingwind" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>wkk</a></span>&nbsp;<span class="post-category">收录于 <a href="/myblog/categories/web/"><i class="far fa-folder fa-fw"></i>web</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-04-05">2020-04-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2802 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#flow-and-rollup">Flow and Rollup</a>
+      <ul>
+        <li><a href="#flow">flow</a>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="#怎么用">怎么用？</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#rollup">rollup</a></li>
+      </ul>
+    </li>
+    <li><a href="#react源码目录结构">React源码目录结构</a></li>
+    <li><a href="#react核心代码">react核心代码</a>
+      <ul>
+        <li><a href="#对外暴露的api">对外暴露的API</a></li>
+        <li><a href="#component和purecomponent">Component和PureComponent</a>
+          <ul>
+            <li><a href="#两者使用上有什么差别"><code>两者使用上有什么差别</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#memo">memo</a></li>
+        <li><a href="#createelement">createElement</a>
+          <ul>
+            <li><a href="#reactelement">ReactElement</a></li>
+          </ul>
+        </li>
+        <li><a href="#children">Children</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>记录React源码阅读的一些收获 always updating&hellip;</p>
+<h2 id="flow-and-rollup">Flow and Rollup</h2>
+<h3 id="flow">flow</h3>
+<p>flow是辅助JavaScript的静态类型检查工具，相对于TypeScript来说，不需要改写全部的功能模块</p>
+<p>而且使用Flow只需要依赖于Babel的插件，具有极大的灵活性</p>
+<h5 id="怎么用">怎么用？</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 安装flow</span>
+npm install --save-dev flow-bin
+<span class="c1"># package.json添加对应的script</span>
+<span class="c1"># init</span>
+npm run flow init
+<span class="c1"># babel安装依赖插件</span>
+npm install --save-dev babel-preset-flow
+<span class="c1">#  .babelrc添加flow的preset</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>配置好了Flow，只要在要使用的模块里<code>@flow</code>注解，然后增加想要的类型检查</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="cm">/* @flow */</span>
+
+<span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">x</span><span class="o">:</span> <span class="nx">number</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="nx">number</span><span class="p">)</span><span class="o">:</span> <span class="nx">number</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span>
+<span class="p">}</span>
+
+<span class="nx">add</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>注意：Flow拥有上下文推断类型的能力</p>
+<h3 id="rollup">rollup</h3>
+<p>打包工具</p>
+<p>开发库用rollup 开发项目用webpack</p>
+<p>rollup主要优点是体积小 但是不支持热加载</p>
+<h2 id="react源码目录结构">React源码目录结构</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">├── build -------------------------------  构建后的输出目录
+├── fixtures ----------------------------  React 开发的测试用例
+├── packages ----------------------------  源码目录
+│   ├── create-subscription -------------  在组件里订阅额外数据的工具
+│   ├── events --------------------------  事件处理 
+│   ├── interaction-tracking ------------  跟踪交互事件
+│   ├── react ---------------------------  核心代码
+│   ├── react-art -----------------------  矢量图形库
+│   ├── react-dom -----------------------  DOM 渲染相关
+│   ├── react-is ------------------------  React 元素类型相关
+│   ├── react-native-renderer -----------  react-native 渲染相关 
+│   ├── react-noop-renderer -------------  Fiber 测试相关 
+│   ├── react-reconciler ----------------  React 调制器
+│   ├── react-scheduler -----------------  规划 React 初始化，更新等等
+│   ├── react-test-renderer -------------  实验性的 React 渲染器
+│   ├── shared --------------------------  通用代码
+│   ├── simple-cache-provider -----------  为 React 应用提供缓存
+│   ├── server --------------------------  服务端渲染
+│   ├── sfc -----------------------------  .vue 文件解析
+│   ├── shared --------------------------  整个项目通用代码
+├── scripts -----------------------------  公共的lint，build，test和release等相关的文件
+│   ├── eslint --------------------------  语法规则和代码风格
+│   ├── flow ----------------------------  Flow 类型声明
+│   ├── git -----------------------------  git钩子的目录
+│   ├── jest ----------------------------  JavaScript 测试目录
+│   ├── release -------------------------  自动发布新版本脚本
+│   ├── rollup --------------------------  rollup 构建目录
+├── .babelrc ----------------------------  babel 配置文件
+├── .editorconfig -----------------------  编辑器语法规范配置
+├── .eslintignore -----------------------  eslint 忽略配置 
+├── .eslintrc ---------------------------  eslint 配置文件
+├── .gitattributes ----------------------  给 attributes 路径名的简单文本文件
+├── .gitignore --------------------------  git 忽略配置
+├── .mailmap ----------------------------  邮件列表档案 
+├── .nvmrc ------------------------------  nvm 配置文件
+├── .prettierrc.js ----------------------  prettierrc 配置文件
+├── .watchmanconfig ---------------------  watchman 配置文件
+├── appveyor.yml ------------------------  GitHub 托管项目的自动化集成
+├── AUTHORS -----------------------------  开发者列表档案
+├── CHANGELOG.md ------------------------  更新日志
+├── CODE_OF_CONDUCT.md ------------------  Code of Conduct
+├── CONTRIBUTING.md ---------------------  Contributing to React
+├── dangerfile.js -----------------------  提高 Code Review 体验
+├── netlify.toml ------------------------  持续集成静态网站
+├── package-lock.json -------------------  npm 加锁文件
+├── package.json ------------------------  项目管理文件
+├── README.md ---------------------------  项目文档
+├── yarn.lock ---------------------------  yarn 加锁文件
+</code></pre></td></tr></table>
+</div>
+</div><p>由于将react-dom单独提取出来了，所以react本身的核心代码只有几千行，先来看看咯</p>
+<h2 id="react核心代码">react核心代码</h2>
+<h3 id="对外暴露的api">对外暴露的API</h3>
+<p>react对外是一个Javascript对象，暴露了它的API，位置在<code>packages/react/src/index.js</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">export</span> <span class="p">{</span>
+  <span class="nx">Children</span><span class="p">,</span> <span class="c1">//处理props.children的方法
+</span><span class="c1"></span>  <span class="nx">createRef</span><span class="p">,</span> <span class="c1">//新的ref用法
+</span><span class="c1"></span>  <span class="nx">Component</span><span class="p">,</span> <span class="c1">//组件基类
+</span><span class="c1"></span>  <span class="nx">PureComponent</span><span class="p">,</span> <span class="c1">//组件基类
+</span><span class="c1"></span>  <span class="nx">createContext</span><span class="p">,</span> <span class="c1">//新的context用法
+</span><span class="c1"></span>  <span class="nx">forwardRef</span><span class="p">,</span> <span class="c1">//ref传递
+</span><span class="c1"></span>  <span class="nx">lazy</span><span class="p">,</span>
+  <span class="nx">memo</span><span class="p">,</span>
+  <span class="nx">useCallback</span><span class="p">,</span>
+  <span class="nx">useContext</span><span class="p">,</span>
+  <span class="nx">useEffect</span><span class="p">,</span>
+  <span class="nx">useImperativeHandle</span><span class="p">,</span>
+  <span class="nx">useDebugValue</span><span class="p">,</span>
+  <span class="nx">useLayoutEffect</span><span class="p">,</span>
+  <span class="nx">useMemo</span><span class="p">,</span>
+  <span class="nx">useReducer</span><span class="p">,</span>
+  <span class="nx">useRef</span><span class="p">,</span>
+  <span class="nx">useState</span><span class="p">,</span>
+  <span class="nx">useMutableSource</span><span class="p">,</span>
+  <span class="nx">createMutableSource</span><span class="p">,</span>
+  <span class="nx">Fragment</span><span class="p">,</span>
+  <span class="nx">Profiler</span><span class="p">,</span>
+  <span class="nx">StrictMode</span><span class="p">,</span>
+  <span class="nx">Suspense</span><span class="p">,</span>
+  <span class="nx">createElement</span><span class="p">,</span> <span class="c1">//创建element
+</span><span class="c1"></span>  <span class="nx">cloneElement</span><span class="p">,</span> <span class="c1">//克隆element
+</span><span class="c1"></span>  <span class="nx">isValidElement</span><span class="p">,</span> <span class="c1">//验证是否是react element
+</span><span class="c1"></span>  <span class="nx">version</span><span class="p">,</span>
+  <span class="mi">__</span><span class="nx">SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED</span><span class="p">,</span>
+  <span class="nx">createFactory</span><span class="p">,</span> <span class="c1">//创建某一类element
+</span><span class="c1"></span>  <span class="nx">useTransition</span><span class="p">,</span>
+  <span class="nx">useDeferredValue</span><span class="p">,</span>
+  <span class="nx">SuspenseList</span><span class="p">,</span>
+  <span class="nx">unstable_withSuspenseConfig</span><span class="p">,</span>
+  <span class="nx">block</span><span class="p">,</span>
+  <span class="nx">DEPRECATED_useResponder</span><span class="p">,</span>
+  <span class="nx">DEPRECATED_createResponder</span><span class="p">,</span>
+  <span class="nx">unstable_createFundamental</span><span class="p">,</span>
+  <span class="nx">unstable_createScope</span><span class="p">,</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./src/React&#39;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>可以看到许多由于最近加了hooks多了不少use开头的API</p>
+<h3 id="component和purecomponent">Component和PureComponent</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">Component</span><span class="p">(</span><span class="nx">props</span><span class="p">,</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">updater</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">props</span> <span class="o">=</span> <span class="nx">props</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">context</span> <span class="o">=</span> <span class="nx">context</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">refs</span> <span class="o">=</span> <span class="nx">emptyObject</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">updater</span> <span class="o">=</span> <span class="nx">updater</span> <span class="o">||</span> <span class="nx">ReactNoopUpdateQueue</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">Component</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">isReactComponent</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="c1">// setState
+</span><span class="c1"></span><span class="nx">Component</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">setState</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">partialState</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// partialState:产生下一个state的部分state
+</span><span class="c1"></span>  <span class="c1">// callback:update state以后的回调函数
+</span><span class="c1"></span>  <span class="nx">invariant</span><span class="p">(</span>
+    <span class="k">typeof</span> <span class="nx">partialState</span> <span class="o">===</span> <span class="s1">&#39;object&#39;</span> <span class="o">||</span>
+      <span class="k">typeof</span> <span class="nx">partialState</span> <span class="o">===</span> <span class="s1">&#39;function&#39;</span> <span class="o">||</span>
+      <span class="nx">partialState</span> <span class="o">==</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="s1">&#39;setState(...): takes an object of state variables to update or a &#39;</span> <span class="o">+</span>
+      <span class="s1">&#39;function which returns an object of state variables.&#39;</span><span class="p">,</span>
+  <span class="p">);</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">updater</span><span class="p">.</span><span class="nx">enqueueSetState</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">partialState</span><span class="p">,</span> <span class="nx">callback</span><span class="p">,</span> <span class="s1">&#39;setState&#39;</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="c1">// forceUpdate
+</span><span class="c1"></span><span class="nx">Component</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">forceUpdate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">updater</span><span class="p">.</span><span class="nx">enqueueForceUpdate</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">callback</span><span class="p">,</span> <span class="s1">&#39;forceUpdate&#39;</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>pureComponent继承了component的prototype，中间造了个dummyComponent（不知道有什么用）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">PureComponent</span><span class="p">(</span><span class="nx">props</span><span class="p">,</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">updater</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">props</span> <span class="o">=</span> <span class="nx">props</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">context</span> <span class="o">=</span> <span class="nx">context</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">refs</span> <span class="o">=</span> <span class="nx">emptyObject</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">updater</span> <span class="o">=</span> <span class="nx">updater</span> <span class="o">||</span> <span class="nx">ReactNoopUpdateQueue</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">pureComponentPrototype</span> <span class="o">=</span> <span class="p">(</span><span class="nx">PureComponent</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ComponentDummy</span><span class="p">());</span>
+<span class="nx">pureComponentPrototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="nx">PureComponent</span><span class="p">;</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="nx">pureComponentPrototype</span><span class="p">,</span> <span class="nx">Component</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+<span class="nx">pureComponentPrototype</span><span class="p">.</span><span class="nx">isPureReactComponent</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="两者使用上有什么差别"><code>两者使用上有什么差别</code></h4>
+<p>可以看到源码的定义是几乎完全一样，但是根据渲染的代码可以知道pureComponent在某些情况下可以提升性能</p>
+<p>通过浅比较（react定义的shallowEqual）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="k">if</span> <span class="p">(</span><span class="nx">ctor</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">&amp;&amp;</span> <span class="nx">ctor</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">isPureReactComponent</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">!</span><span class="nx">shallowEqual</span><span class="p">(</span><span class="nx">oldProps</span><span class="p">,</span> <span class="nx">newProps</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="nx">shallowEqual</span><span class="p">(</span><span class="nx">oldState</span><span class="p">,</span> <span class="nx">newState</span><span class="p">)</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>所谓浅比较就是引用发生改变的时候会判定不同，否则相同</p>
+<p>可以参考一下下面的例子👇</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-jsx" data-lang="jsx"><span class="kr">class</span> <span class="nx">BasicType</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PureComponent</span><span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kr">super</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">isShow</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">};</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;constructor BasicType&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">changeState</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+      <span class="nx">isShow</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">})</span>
+  <span class="p">};</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// render will not be output after first render
+</span><span class="c1"></span>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;render&#39;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">changeState</span><span class="p">}&gt;</span><span class="nx">点击</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">isShow</span><span class="p">.</span><span class="nx">toString</span><span class="p">()}&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">ArrayType</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PureComponent</span><span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kr">super</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">arr</span><span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+    <span class="p">};</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;constructor ArrayType&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">changeState</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">tarr</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">arr</span><span class="p">;</span>
+    <span class="nx">tarr</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+      <span class="nx">arr</span><span class="o">:</span> <span class="nx">tarr</span>
+    <span class="p">})</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;this.state:&#34;</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">arr</span><span class="p">)</span>
+  <span class="p">};</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;render&#39;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">changeState</span><span class="p">}&gt;</span><span class="nx">点击</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">arr</span><span class="p">.</span><span class="nx">toString</span><span class="p">()}&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kr">const</span> <span class="nx">R</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">BasicType</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;</span><span class="nt">ArrayType</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+  <span class="p">&lt;</span><span class="nt">R</span><span class="p">/&gt;,</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>所以PureComponent适用场景是展示组件或者引用数据不发生改变的地方</p>
+<p>比如注意下面这个例子👇</p>
+<p>我们不希望每秒钟子组件Child也跟着渲染</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-jsx" data-lang="jsx"><span class="kr">class</span> <span class="nx">ABC</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">){</span>
+        <span class="kr">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="nx">date</span> <span class="o">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nx">componentDidMount</span><span class="p">(){</span>
+        <span class="nx">setInterval</span><span class="p">(()=&gt;{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+                <span class="nx">date</span><span class="o">:</span><span class="k">new</span> <span class="nb">Date</span><span class="p">()</span>
+            <span class="p">})</span>
+        <span class="p">},</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">render</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">Child</span> <span class="na">seconds</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">}/&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">date</span><span class="p">.</span><span class="nx">toString</span><span class="p">()}&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="memo">memo</h3>
+<p>取的名字有点意思——备忘录，可能就是代表规模小的数据展示组件吧</p>
+<p>react核心代码里只写了定义</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">export</span> <span class="kd">function</span> <span class="nx">memo</span><span class="o">&lt;</span><span class="nx">Props</span><span class="o">&gt;</span><span class="p">(</span>
+  <span class="nx">type</span><span class="o">:</span> <span class="nx">React$ElementType</span><span class="p">,</span>
+  <span class="nx">compare</span><span class="o">?:</span> <span class="p">(</span><span class="nx">oldProps</span><span class="o">:</span> <span class="nx">Props</span><span class="p">,</span> <span class="nx">newProps</span><span class="o">:</span> <span class="nx">Props</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="kr">boolean</span><span class="p">,</span>
+<span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="mi">__</span><span class="nx">DEV__</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isValidElementType</span><span class="p">(</span><span class="nx">type</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span>
+        <span class="s1">&#39;memo: The first argument must be a component. Instead &#39;</span> <span class="o">+</span>
+          <span class="s1">&#39;received: %s&#39;</span><span class="p">,</span>
+        <span class="nx">type</span> <span class="o">===</span> <span class="kc">null</span> <span class="o">?</span> <span class="s1">&#39;null&#39;</span> <span class="o">:</span> <span class="k">typeof</span> <span class="nx">type</span><span class="p">,</span>
+      <span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">$$typeof</span><span class="o">:</span> <span class="nx">REACT_MEMO_TYPE</span><span class="p">,</span>
+    <span class="nx">type</span><span class="p">,</span>
+    <span class="nx">compare</span><span class="o">:</span> <span class="nx">compare</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">?</span> <span class="kc">null</span> <span class="o">:</span> <span class="nx">compare</span><span class="p">,</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>所以就是传入一个react element和一个props自定义比较函数，返回一个对象</p>
+<p>使用起来就是这样👇</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-jsx" data-lang="jsx"><span class="kd">function</span> <span class="nx">Child</span><span class="p">({</span><span class="nx">seconds</span><span class="p">}){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;I am rendering&#39;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span><span class="nx">I</span> <span class="nx">am</span> <span class="nx">update</span> <span class="nx">every</span> <span class="p">{</span><span class="nx">seconds</span><span class="p">}</span> <span class="nx">seconds</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">)</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">areEqual</span><span class="p">(</span><span class="nx">prevProps</span><span class="p">,</span> <span class="nx">nextProps</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">prevProps</span><span class="p">.</span><span class="nx">seconds</span><span class="o">===</span><span class="nx">nextProps</span><span class="p">.</span><span class="nx">seconds</span><span class="p">){</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">false</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">React</span><span class="p">.</span><span class="nx">memo</span><span class="p">(</span><span class="nx">Child</span><span class="p">,</span><span class="nx">areEqual</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>看上去就是一个针对函数组件的PureComponent呢</p>
+<h3 id="createelement">createElement</h3>
+<p>传入type、config和children，return一个ReactElement</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">createElement</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">children</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// 这里是对config和children的一些处理
+</span><span class="c1"></span>  <span class="k">return</span> <span class="nx">ReactElement</span><span class="p">(</span>
+    <span class="nx">type</span><span class="p">,</span>
+    <span class="nx">key</span><span class="p">,</span>
+    <span class="nx">ref</span><span class="p">,</span>
+    <span class="nx">self</span><span class="p">,</span>
+    <span class="nx">source</span><span class="p">,</span>
+    <span class="nx">ReactCurrentOwner</span><span class="p">.</span><span class="nx">current</span><span class="p">,</span>
+    <span class="nx">props</span><span class="p">,</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>可以看到传入config中的key和ref被保留了下来</p>
+<p>我们看看ReactElement是什么？</p>
+<h4 id="reactelement">ReactElement</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">ReactElement</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">ref</span><span class="p">,</span> <span class="nx">self</span><span class="p">,</span> <span class="nx">source</span><span class="p">,</span> <span class="nx">owner</span><span class="p">,</span> <span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// This tag allows us to uniquely identify this as a React Element
+</span><span class="c1"></span>    <span class="nx">$$typeof</span><span class="o">:</span> <span class="nx">REACT_ELEMENT_TYPE</span><span class="p">,</span>
+    <span class="c1">// Built-in properties that belong on the element
+</span><span class="c1"></span>    <span class="nx">type</span><span class="o">:</span> <span class="nx">type</span><span class="p">,</span>
+    <span class="nx">key</span><span class="o">:</span> <span class="nx">key</span><span class="p">,</span>
+    <span class="nx">ref</span><span class="o">:</span> <span class="nx">ref</span><span class="p">,</span>
+    <span class="nx">props</span><span class="o">:</span> <span class="nx">props</span><span class="p">,</span>
+    <span class="c1">// Record the component responsible for creating this element.
+</span><span class="c1"></span>    <span class="mi">_</span><span class="nx">owner</span><span class="o">:</span> <span class="nx">owner</span><span class="p">,</span>
+  <span class="p">};</span>
+  <span class="k">return</span> <span class="nx">element</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li><code>type</code>类型，用于判断如何创建节点</li>
+<li><code>key</code>和<code>ref</code>这些特殊信息</li>
+<li><code>props</code>新的属性内容</li>
+<li><code>$$typeof</code>用于确定是否属于<code>ReactElement</code></li>
+</ol>
+<h3 id="children">Children</h3>
+<p>前面说到这里提供了几个处理children的API</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">Children</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">map</span><span class="p">,</span>
+  <span class="nx">forEach</span><span class="p">,</span>
+  <span class="nx">count</span><span class="p">,</span>
+  <span class="nx">toArray</span><span class="p">,</span>
+  <span class="nx">only</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>先看下比如map的使用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-jsx" data-lang="jsx"><span class="kd">var</span> <span class="nx">NotesList</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span>
+          <span class="p">{</span>
+            <span class="nx">React</span><span class="p">.</span><span class="nx">Children</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">children</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">child</span><span class="p">)</span> <span class="p">{</span>
+              <span class="k">return</span> <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;{</span><span class="nx">child</span><span class="p">}&lt;/</span><span class="nt">li</span><span class="p">&gt;;</span>
+            <span class="p">})</span>
+          <span class="p">}</span>
+        <span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+      <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">React</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+  <span class="p">&lt;</span><span class="nt">NotesList</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span><span class="nx">hello</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span><span class="nx">hello</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">NotesList</span><span class="p">&gt;,</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">body</span>
+<span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-04-06</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/myblog/react%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/myblog/tags/react/">react</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/myblog/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/myblog/groupcache%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="prev" rel="prev" title="Groupcache源码阅读笔记"><i class="fas fa-angle-left fa-fw"></i>Groupcache源码阅读笔记</a>
+            <a href="/myblog/nsq%E5%88%9D%E6%8E%A2/" class="next" rel="next" title="nsq初探">nsq初探<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by Hugo | Theme is LoveIt
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/landingwind" target="_blank">wkk</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/myblog/lib/katex/katex.min.4afae7d446ba01ebf7fff19893eaf3a1.css" integrity="md5-Svrn1Ea6Aev3//GYk&#43;rzoQ=="><link rel="stylesheet" href="/myblog/lib/katex/copy-tex.min.b1994d1b9785dd8801dbf655df7bf6d9.css" integrity="md5-sZlNG5eF3YgB2/ZV33v22Q=="><link rel="stylesheet" href="/myblog/lib/cookieconsent/cookieconsent.min.acf82ee47549fdc386d02768992a49ad.css" integrity="md5-rPgu5HVJ/cOG0CdomSpJrQ=="><script type="text/javascript" src="/myblog/lib/smooth-scroll/smooth-scroll.min.100efdceabf7a138f3297e437d078f74.js" integrity="md5-EA79zqv3oTjzKX5DfQePdA=="></script><script type="text/javascript" src="/myblog/lib/lazysizes/lazysizes.min.b80e49640d4794d4333d00db76ea22f7.js" integrity="md5-uA5JZA1HlNQzPQDbduoi9w=="></script><script type="text/javascript" src="/myblog/lib/clipboard/clipboard.min.af8ab36589315582ccdd82f22e84bffb.js" integrity="md5-r4qzZYkxVYLM3YLyLoS/&#43;w=="></script><script type="text/javascript" src="/myblog/lib/katex/katex.min.c158c9e823b681cf535f46596b5e4eac.js" integrity="md5-wVjJ6CO2gc9TX0ZZa15OrA=="></script><script type="text/javascript" src="/myblog/lib/katex/auto-render.min.28cd0b98cd3f4fa37d52f3ffe47ad9d4.js" integrity="md5-KM0LmM0/T6N9UvP/5HrZ1A=="></script><script type="text/javascript" src="/myblog/lib/katex/copy-tex.min.bfaec7d1dea915d74a7a6d833f0ff62e.js" integrity="md5-v67H0d6pFddKem2DPw/2Lg=="></script><script type="text/javascript" src="/myblog/lib/katex/mhchem.min.1bbb252363e83547d4b2186a41eaca28.js" integrity="md5-G7slI2PoNUfUshhqQerKKA=="></script><script type="text/javascript" src="/myblog/lib/cookieconsent/cookieconsent.min.4a48532bf0b17c058b8b6854f49de23f.js" integrity="md5-SkhTK/CxfAWLi2hU9J3iPw=="></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/myblog/js/theme.min.7bc7989e979c4a19d97db3ab311a80fe.js" integrity="md5-e8eYnpecShnZfbOrMRqA/g=="></script></body>
+</html>

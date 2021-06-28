@@ -5,10 +5,10 @@
         <description>云盘 - 标签 - Melon</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 29 Jan 2020 22:52:02 &#43;0800</lastBuildDate><atom:link href="https://landingwind.github.io/myblog/tags/%E4%BA%91%E7%9B%98/" rel="self" type="application/rss+xml" /><item>
     <title>ownCloud&#43;mysql&#43;docker搭建个人云盘</title>
-    <link>https://landingwind.github.io/myblog/tech/personal-clouddisk/</link>
+    <link>https://landingwind.github.io/myblog/owncloud-mysql-docker%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%BA%91%E7%9B%98/</link>
     <pubDate>Wed, 29 Jan 2020 22:52:02 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://landingwind.github.io/myblog/tech/personal-clouddisk/</guid>
+    <guid>https://landingwind.github.io/myblog/owncloud-mysql-docker%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%BA%91%E7%9B%98/</guid>
     <description><![CDATA[记录三小时搭建ownCloud云盘全过程🆒 话不多说, 先放一张成功的登录界面图👌 step 1: 选择一个适合的开源云盘 这里有很多选择 比如老牌劲旅ownCl]]></description>
 </item></channel>
 </rss>
