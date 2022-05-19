@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>并查集 - 标签 - Melon</title>
-        <link>https://landingwind.github.io/myblog/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/</link>
+        <link>https://wkk.vercel.app/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/</link>
         <description>并查集 - 标签 - Melon</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 07 Feb 2020 11:00:02 &#43;0800</lastBuildDate><atom:link href="https://landingwind.github.io/myblog/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 07 Feb 2020 11:00:02 &#43;0800</lastBuildDate><atom:link href="https://wkk.vercel.app/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="self" type="application/rss+xml" /><item>
     <title>并查集算法概念及实现</title>
-    <link>https://landingwind.github.io/myblog/%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%AE%97%E6%B3%95%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%9E%E7%8E%B0/</link>
+    <link>https://wkk.vercel.app/%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%AE%97%E6%B3%95%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%9E%E7%8E%B0/</link>
     <pubDate>Fri, 07 Feb 2020 11:00:02 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://landingwind.github.io/myblog/%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%AE%97%E6%B3%95%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%9E%E7%8E%B0/</guid>
+    <guid>https://wkk.vercel.app/%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%AE%97%E6%B3%95%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%9E%E7%8E%B0/</guid>
     <description><![CDATA[记录一下很早就学过的并查集 最简洁而优雅的数据结构之一 主要用于解决一些元素分组的问题 核心思想 通过一维数组，index表示当前元素编号，valu]]></description>
 </item></channel>
 </rss>

@@ -1,8 +1,6 @@
 # Hugo+Docker+Webhooks最佳实践
 
 
-
-
 记录迁移个人博客到Hugo的过程
 
 ## 写在前面
@@ -20,8 +18,6 @@
 开始的想法是单纯部署在Github Pages上，但是github响应速度太慢
 
 于是决定采用github作为仓库，实际部署在自己的阿里云服务器上，用Docker+Webhooks的形式实现高效管理
-
-
 
 ## Docker For Static
 
@@ -56,8 +52,6 @@ docker run -dt \
 -d nginx
 ```
 
-
-
 ## Webhooks
 
 ### `webhooks`
@@ -75,8 +69,6 @@ github被微软收购以后推出的免费功能
 **Content type** 是post请求的body格式，这里我选择了application/json
 
 **Secret** 是自行设定的一个密钥，收到post请求后在服务器端可以通过密钥对packet进行验证
-
-
 
 ### `server handler`
 
@@ -122,7 +114,7 @@ bash脚本内容如下
 
 ```bash
 WEB_PATH='/root/hugoblog/html'
- 
+
 echo "Start deployment"
 cd $WEB_PATH
 echo "pulling source code..."
@@ -137,8 +129,6 @@ echo "Finished."
 记得要重启承载静态网页文件的nginx docker哦
 
 {{< /admonition >}}
-
-
 
 ## 让Blog更新只需要一行命令
 
@@ -168,11 +158,7 @@ git push origin master
 echo "fire finished"
 ```
 
-
-
 写好文章只需要 `./fire.sh` 即可
-
-
 
 ## Possible Error & Solution
 
@@ -188,8 +174,6 @@ app.use(bodyParser.urlencoded({extended:true}));
 // 根据需要使用这两个中间件即可
 ```
 
-
-
 #### bash脚本执行无效
 
 起初我将响应webhook的expressjs同样做成了一个docker
@@ -197,9 +181,4 @@ app.use(bodyParser.urlencoded({extended:true}));
 这就导致执行bash是在容器内执行的，对宿主机没有任何影响
 
 解决方案包括执行ssh远程命令、将响应webhook的框架直接架设在宿主机中、docker之间建立关联等等
-
-
-
-
-
 

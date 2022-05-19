@@ -1,28 +1,28 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>算法 - 分类 - Melon</title>
-        <link>https://landingwind.github.io/myblog/categories/%E7%AE%97%E6%B3%95/</link>
+        <link>https://wkk.vercel.app/categories/%E7%AE%97%E6%B3%95/</link>
         <description>算法 - 分类 - Melon</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 10 Mar 2020 11:00:02 &#43;0800</lastBuildDate><atom:link href="https://landingwind.github.io/myblog/categories/%E7%AE%97%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 10 Mar 2020 11:00:02 &#43;0800</lastBuildDate><atom:link href="https://wkk.vercel.app/categories/%E7%AE%97%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
     <title>Min-Max算法及Alpha-Beta剪枝</title>
-    <link>https://landingwind.github.io/myblog/min-max%E7%AE%97%E6%B3%95%E5%8F%8Aalpha-beta%E5%89%AA%E6%9E%9D/</link>
+    <link>https://wkk.vercel.app/min-max%E7%AE%97%E6%B3%95%E5%8F%8Aalpha-beta%E5%89%AA%E6%9E%9D/</link>
     <pubDate>Tue, 10 Mar 2020 11:00:02 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://landingwind.github.io/myblog/min-max%E7%AE%97%E6%B3%95%E5%8F%8Aalpha-beta%E5%89%AA%E6%9E%9D/</guid>
+    <guid>https://wkk.vercel.app/min-max%E7%AE%97%E6%B3%95%E5%8F%8Aalpha-beta%E5%89%AA%E6%9E%9D/</guid>
     <description><![CDATA[适用于所有情况完全已知的游戏，并且是零和游戏。 零和游戏（Zero-sum Game）：意思就是你死我活，一方的胜利代表另一方的失败，比如，象棋]]></description>
 </item><item>
     <title>并查集算法概念及实现</title>
-    <link>https://landingwind.github.io/myblog/%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%AE%97%E6%B3%95%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%9E%E7%8E%B0/</link>
+    <link>https://wkk.vercel.app/%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%AE%97%E6%B3%95%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%9E%E7%8E%B0/</link>
     <pubDate>Fri, 07 Feb 2020 11:00:02 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://landingwind.github.io/myblog/%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%AE%97%E6%B3%95%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%9E%E7%8E%B0/</guid>
+    <guid>https://wkk.vercel.app/%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%AE%97%E6%B3%95%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%9E%E7%8E%B0/</guid>
     <description><![CDATA[记录一下很早就学过的并查集 最简洁而优雅的数据结构之一 主要用于解决一些元素分组的问题 核心思想 通过一维数组，index表示当前元素编号，valu]]></description>
 </item><item>
     <title>Actor模型</title>
-    <link>https://landingwind.github.io/myblog/actor%E6%A8%A1%E5%9E%8B/</link>
+    <link>https://wkk.vercel.app/actor%E6%A8%A1%E5%9E%8B/</link>
     <pubDate>Sun, 22 Dec 2019 01:00:02 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://landingwind.github.io/myblog/actor%E6%A8%A1%E5%9E%8B/</guid>
+    <guid>https://wkk.vercel.app/actor%E6%A8%A1%E5%9E%8B/</guid>
     <description><![CDATA[actor概念 Actor模型是处理并行计算的概念模型。模型中一个Actor是一个基本的计算单元。它接受消息然后基于接到的消息做一些计算。和面]]></description>
 </item></channel>
 </rss>
