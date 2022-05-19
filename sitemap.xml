@@ -2,7 +2,7 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://wkk.vercel.app/</loc><lastmod>2020-05-31T01:00:02&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://wkk.vercel.app/</loc><lastmod>2020-05-31T01:00:02&#43;08:00</lastmod><priority>0</priority></url><url>
             <loc>https://wkk.vercel.app/categories/</loc><lastmod>2020-05-31T01:00:02&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://wkk.vercel.app/tags/hooks/</loc><lastmod>2020-05-31T01:00:02&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://wkk.vercel.app/posts/</loc><lastmod>2020-05-31T01:00:02&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
