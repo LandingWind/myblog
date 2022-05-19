@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>大学课程 - 分类 - 王开开一直在写 bug</title>
+        <title>大学课程 - 分类 - 唯心不易</title>
         <link>https://wkk.vercel.app/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/</link>
-        <description>大学课程 - 分类 - 王开开一直在写 bug</description>
+        <description>大学课程 - 分类 - 唯心不易</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 10 Mar 2020 11:00:02 &#43;0800</lastBuildDate><atom:link href="https://wkk.vercel.app/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
     <title>Min-Max算法及Alpha-Beta剪枝</title>
     <link>https://wkk.vercel.app/min-max%E7%AE%97%E6%B3%95%E5%8F%8Aalpha-beta%E5%89%AA%E6%9E%9D/</link>

@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>文章 - 王开开一直在写 bug</title>
+        <title>文章 - 唯心不易</title>
         <link>https://wkk.vercel.app/posts/</link>
-        <description>文章 | 王开开一直在写 bug</description>
+        <description>文章 | 唯心不易</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 31 May 2020 01:00:02 &#43;0800</lastBuildDate><atom:link href="https://wkk.vercel.app/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Recoil vs Hox</title>
     <link>https://wkk.vercel.app/recoil-vs-hox/</link>
